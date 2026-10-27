@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orange Blue Running Club — Escola de Atletismo</title>
+  <meta name="description" content="Orange Blue Running Club: escola de atletismo na pista ribeirinha para crianças, jovens e adultos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Manrope:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <header class="nav" id="top">
+    <a class="brand" href="#inicio" data-scroll>
+      <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="2" y="8" width="36" height="24" rx="12" fill="none" stroke="currentColor" stroke-width="3"/>
+        <rect x="9" y="15" width="22" height="10" rx="5" fill="var(--orange)"/>
+      </svg>
+      <span>Orange<b>Blue</b></span>
+    </a>
+    <nav class="nav__links" id="navLinks" aria-label="Principal">
+      <a href="#inicio" data-scroll>Início</a>
+      <a href="#quem-somos" data-scroll>Quem somos</a>
+      <a href="#agenda" data-scroll>Agenda</a>
+      <a href="#inscricoes" data-scroll>Inscrições</a>
+      <a href="#inscricoes" data-scroll class="btn btn--small btn--orange nav__cta">Junta-te a nós</a>
+    </nav>
+    <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ============ INÍCIO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero__copy">
+        <p class="eyebrow reveal"><span class="dot"></span> Escola de atletismo · Pista ribeirinha · Desde 2009</p>
+        <h1 class="hero__title reveal">
+          <span>Cada volta</span>
+          <span>começa com</span>
+          <span class="hero__accent">um primeiro passo.</span>
+        </h1>
+        <p class="hero__lead reveal">
+          O Orange Blue é um clube de atletismo acolhedor onde crianças, jovens e adultos aprendem a correr,
+          saltar, lançar e — acima de tudo — a divertir-se a mexer-se em conjunto.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#inscricoes" data-scroll class="btn btn--orange">Experimenta grátis <i aria-hidden="true">→</i></a>
+          <a href="#agenda" data-scroll class="btn btn--ghost">Ver a agenda do mês</a>
+        </div>
+        <ul class="hero__stats reveal" aria-label="O clube em números">
+          <li><strong data-count="312">0</strong><span>atletas</span></li>
+          <li><strong data-count="14">0</strong><span>treinadores</span></li>
+          <li><strong data-count="48">0</strong><span>pódios em 2025</span></li>
+        </ul>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="track-wrap">
+          <svg class="track" id="trackSvg" viewBox="0 0 600 400">
+            <defs>
+              <linearGradient id="trackGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#FF7A2E"/>
+                <stop offset="1" stop-color="#E4501A"/>
+              </linearGradient>
+              <pattern id="grass" width="40" height="400" patternUnits="userSpaceOnUse">
+                <rect width="20" height="400" fill="#1F4FD1"/>
+                <rect x="20" width="20" height="400" fill="#1A45BA"/>
+              </pattern>
+            </defs>
+            <path d="M170 40 H430 A160 160 0 0 1 430 360 H170 A160 160 0 0 1 170 40Z" fill="url(#trackGrad)"/>
+            <path d="M170 115 H430 A85 85 0 0 1 430 285 H170 A85 85 0 0 1 170 115Z" fill="url(#grass)"/>
+            <g fill="none" stroke="#FFF6EC" stroke-width="1.6" opacity=".9">
+              <path d="M170 40 H430 A160 160 0 0 1 430 360 H170 A160 160 0 0 1 170 40Z"/>
+              <path d="M170 55 H430 A145 145 0 0 1 430 345 H170 A145 145 0 0 1 170 55Z"/>
+              <path d="M170 70 H430 A130 130 0 0 1 430 330 H170 A130 130 0 0 1 170 70Z"/>
+              <path d="M170 85 H430 A115 115 0 0 1 430 315 H170 A115 115 0 0 1 170 85Z"/>
+              <path d="M170 100 H430 A100 100 0 0 1 430 300 H170 A100 100 0 0 1 170 100Z"/>
+              <path d="M170 115 H430 A85 85 0 0 1 430 285 H170 A85 85 0 0 1 170 115Z"/>
+            </g>
+            <g fill="none" stroke="#FFF6EC" stroke-width="1.4" opacity=".55">
+              <circle cx="300" cy="200" r="28"/>
+              <line x1="300" y1="115" x2="300" y2="285"/>
+              <rect x="190" y="170" width="40" height="60" rx="4"/>
+              <rect x="370" y="170" width="40" height="60" rx="4"/>
+            </g>
+            <g>
+              <rect x="300" y="40" width="8" height="75" fill="#FFF6EC"/>
+              <g fill="#0B1F44">
+                <rect x="300" y="40" width="4" height="4"/><rect x="304" y="44" width="4" height="4"/>
+                <rect x="300" y="48" width="4" height="4"/><rect x="304" y="52" width="4" height="4"/>
+                <rect x="300" y="56" width="4" height="4"/><rect x="304" y="60" width="4" height="4"/>
+                <rect x="300" y="64" width="4" height="4"/><rect x="304" y="68" width="4" height="4"/>
+                <rect x="300" y="72" width="4" height="4"/><rect x="304" y="76" width="4" height="4"/>
+                <rect x="300" y="80" width="4" height="4"/><rect x="304" y="84" width="4" height="4"/>
+                <rect x="300" y="88" width="4" height="4"/><rect x="304" y="92" width="4" height="4"/>
+                <rect x="300" y="96" width="4" height="4"/><rect x="304" y="100" width="4" height="4"/>
+                <rect x="300" y="104" width="4" height="4"/><rect x="304" y="108" width="4" height="4"/>
+              </g>
+            </g>
+            <g font-family="Space Mono, monospace" font-size="9" fill="#FFF6EC" font-weight="700">
+              <text x="284" y="51">5</text><text x="284" y="66">4</text><text x="284" y="81">3</text>
+              <text x="284" y="96">2</text><text x="284" y="111">1</text>
+            </g>
+            <g class="runners">
+              <circle r="6" fill="#0B1F44" stroke="#FFF6EC" stroke-width="2">
+                <animateMotion dur="7s" repeatCount="indefinite" path="M300 292.5 H170 A92.5 92.5 0 0 1 170 107.5 H430 A92.5 92.5 0 0 1 430 292.5Z"/>
+              </circle>
+              <circle r="6" fill="#FFF6EC" stroke="#0B1F44" stroke-width="2">
+                <animateMotion dur="7.6s" repeatCount="indefinite" path="M300 307.5 H170 A107.5 107.5 0 0 1 170 92.5 H430 A107.5 107.5 0 0 1 430 307.5Z"/>
+              </circle>
+              <circle r="6" fill="#1F4FD1" stroke="#FFF6EC" stroke-width="2">
+                <animateMotion dur="8.1s" repeatCount="indefinite" path="M300 322.5 H170 A122.5 122.5 0 0 1 170 77.5 H430 A122.5 122.5 0 0 1 430 322.5Z"/>
+              </circle>
+              <circle r="6" fill="#0B1F44" stroke="#FFB27A" stroke-width="2">
+                <animateMotion dur="8.8s" repeatCount="indefinite" path="M300 337.5 H170 A137.5 137.5 0 0 1 170 62.5 H430 A137.5 137.5 0 0 1 430 337.5Z"/>
+              </circle>
+              <circle r="6" fill="#FFF6EC" stroke="#1F4FD1" stroke-width="2">
+                <animateMotion dur="9.4s" repeatCount="indefinite" path="M300 352.5 H170 A152.5 152.5 0 0 1 170 47.5 H430 A152.5 152.5 0 0 1 430 352.5Z"/>
+              </circle>
+            </g>
+          </svg>
+        </div>
+        <div class="chip chip--a"><span class="mono" id="stopwatch">00:00,00</span><small>cronómetro em direto</small></div>
+        <div class="chip chip--b"><b>Pista 3</b><small>Clínica de velocidade ao sábado</small></div>
+        <div class="sun"></div>
+      </div>
+    </section>
+
+    <!-- ============ FAIXA ============ -->
+    <div class="ribbon" aria-hidden="true">
+      <div class="ribbon__track">
+        <span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span><span>✶</span><span>Lançamento do peso</span><span>✶</span><span>Corta-mato</span><span>✶</span><span>Meio-fundo</span><span>✶</span>
+        <span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span><span>✶</span><span>Lançamento do peso</span><span>✶</span><span>Corta-mato</span><span>✶</span><span>Meio-fundo</span><span>✶</span>
+      </div>
+    </div>
+
+    <!-- ============ QUEM SOMOS ============ -->
+    <section class="section about" id="quem-somos">
+      <header class="section__head reveal">
+        <p class="lane-tag"><span>Pista 01</span> Quem somos</p>
+        <h2>Um clube pequeno com um <em>grande</em> aquecimento.</h2>
+      </header>
+
+      <div class="about__grid">
+        <div class="about__story reveal">
+          <p class="big">
+            Começámos em 2009 com seis miúdos, um cronómetro e um conjunto de barreiras emprestado. Hoje, o Orange Blue
+            é uma escola de atletismo comunitária onde cada atleta — estreante ou futuro campeão — tem a sua própria pista.
+          </p>
+          <p>
+            Os nossos treinadores são certificados pela federação e os treinos misturam técnica, brincadeira e
+            competição saudável. O laranja representa a energia; o azul, a concentração tranquila antes do tiro de partida.
+          </p>
+          <button class="link-btn" data-toggle="storyMore" aria-expanded="false">Lê a nossa história completa <i aria-hidden="true">+</i></button>
+          <div class="collapse" id="storyMore">
+            <div>
+              <p>
+                Em 2014 mudámo-nos para a pista municipal junto ao rio e abrimos o primeiro grupo de adultos. Em 2019 a nossa
+                estafeta de sub-16 sagrou-se campeã regional — a fotografia continua pendurada na sede. Desde 2022 organizamos
+                a “Pista Aberta” gratuita aos sábados, para que as famílias possam experimentar o atletismo sem compromisso.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <ul class="values">
+          <li class="value reveal">
+            <span class="value__n mono">01</span>
+            <h3>Primeiro, brincar</h3>
+            <p>Os jogos desenvolvem velocidade e coordenação muito antes de aparecer o cronómetro.</p>
+          </li>
+          <li class="value reveal">
+            <span class="value__n mono">02</span>
+            <h3>Todas as idades</h3>
+            <p>Grupos dos 6 anos aos veteranos 60+. Ninguém é demasiado novo nem chega tarde demais.</p>
+          </li>
+          <li class="value reveal">
+            <span class="value__n mono">03</span>
+            <h3>Treino a sério</h3>
+            <p>Grupos pequenos, treinadores certificados e um fisioterapeuta parceiro todas as semanas.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="coaches">
+        <h3 class="coaches__title reveal">Conhece os treinadores</h3>
+        <div class="coaches__grid">
+          <article class="coach reveal">
+            <div class="avatar" style="--hue: var(--orange)"><span>MR</span></div>
+            <h4>Marta Ribeiro</h4>
+            <p class="mono">Treinadora principal · Velocidade</p>
+            <button class="link-btn" data-toggle="coach1" aria-expanded="false">Biografia <i aria-hidden="true">+</i></button>
+            <div class="collapse" id="coach1"><div><p>Ex-finalista nacional de 4×100 m. Acredita que uma partida perfeita é 80% confiança.</p></div></div>
+          </article>
+          <article class="coach reveal">
+            <div class="avatar" style="--hue: var(--blue)"><span>TS</span></div>
+            <h4>Tiago Santos</h4>
+            <p class="mono">Saltos e barreiras</p>
+            <button class="link-btn" data-toggle="coach2" aria-expanded="false">Biografia <i aria-hidden="true">+</i></button>
+            <div class="collapse" id="coach2"><div><p>Saltador em comprimento que se tornou professor. Famoso pelos esquemas de corrida de balanço desenhados a giz.</p></div></div>
+          </article>
+          <article class="coach reveal">
+            <div class="avatar" style="--hue: var(--navy)"><span>AL</span></div>
+            <h4>Ana Lopes</h4>
+            <p class="mono">Infantis e mini-atletismo</p>
+            <button class="link-btn" data-toggle="coach3" aria-expanded="false">Biografia <i aria-hidden="true">+</i></button>
+            <div class="collapse" id="coach3"><div><p>Professora de Educação Física que criou o programa “Rebentos” — atletismo através de jogos, dos 6 aos 11 anos.</p></div></div>
+          </article>
+          <article class="coach reveal">
+            <div class="avatar" style="--hue: #F2A13B"><span>JM</span></div>
+            <h4>João Matos</h4>
+            <p class="mono">Fundo e adultos</p>
+            <button class="link-btn" data-toggle="coach4" aria-expanded="false">Biografia <i aria-hidden="true">+</i></button>
+            <div class="collapse" id="coach4"><div><p>Maratonista com mais de 40 provas terminadas. Orienta o grupo de ritmo de terça e a volta ao rio de domingo.</p></div></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AGENDA ============ -->
+    <section class="section agenda" id="agenda">
+      <header class="section__head reveal">
+        <p class="lane-tag"><span>Pista 02</span> Agenda</p>
+        <h2>O que se passa na pista.</h2>
+        <p class="section__sub">Treinos, provas e corridas solidárias para as próximas semanas. Toca num evento para ver os detalhes.</p>
+      </header>
+
+      <div class="filters reveal" role="tablist" aria-label="Filtrar eventos">
+        <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Todos</button>
+        <button class="filter" data-filter="training" role="tab" aria-selected="false">Treino</button>
+        <button class="filter" data-filter="competition" role="tab" aria-selected="false">Competição</button>
+        <button class="filter" data-filter="community" role="tab" aria-selected="false">Comunidade</button>
+      </div>
+
+      <ol class="events" id="events"></ol>
+
+      <div class="week reveal">
+        <h3>Horário semanal de treinos</h3>
+        <div class="week__table" role="table" aria-label="Horário semanal">
+          <div role="row" class="week__row week__row--head">
+            <span role="columnheader">Grupo</span><span role="columnheader">Seg</span><span role="columnheader">Ter</span><span role="columnheader">Qua</span><span role="columnheader">Qui</span><span role="columnheader">Sáb</span>
+          </div>
+          <div role="row" class="week__row">
+            <span role="cell"><b>Rebentos</b> 6–11</span><span role="cell">17:30</span><span role="cell">—</span><span role="cell">17:30</span><span role="cell">—</span><span role="cell">10:00</span>
+          </div>
+          <div role="row" class="week__row">
+            <span role="cell"><b>Sprint</b> 12–17</span><span role="cell">18:30</span><span role="cell">18:30</span><span role="cell">—</span><span role="cell">18:30</span><span role="cell">09:00</span>
+          </div>
+          <div role="row" class="week__row">
+            <span role="cell"><b>Passada</b> adultos</span><span role="cell">—</span><span role="cell">19:45</span><span role="cell">—</span><span role="cell">19:45</span><span role="cell">08:00</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSCRIÇÕES ============ -->
+    <section class="section join" id="inscricoes">
+      <header class="section__head reveal">
+        <p class="lane-tag lane-tag--light"><span>Pista 03</span> Inscrições</p>
+        <h2>Escolhe a tua pista. <br/>As duas primeiras semanas são grátis.</h2>
+      </header>
+
+      <div class="billing reveal">
+        <span id="lblMonthly" class="is-on">Mensal</span>
+        <button class="switch" id="billingSwitch" role="switch" aria-checked="false" aria-label="Alternar para pagamento anual"><span></span></button>
+        <span id="lblYearly">Anual <em>2 meses grátis</em></span>
+      </div>
+
+      <div class="plans">
+        <article class="plan reveal" data-plan="Rebentos">
+          <p class="plan__age mono">Dos 6 aos 11 anos</p>
+          <h3>Rebentos</h3>
+          <p class="plan__price"><span class="amt" data-month="22" data-year="220">22</span><span class="cur">€</span><span class="per">/mês</span></p>
+          <ul>
+            <li>3 treinos por semana</li>
+            <li>Jogos de mini-atletismo</li>
+            <li>T-shirt do clube incluída</li>
+          </ul>
+          <button class="btn btn--line" data-choose="Rebentos">Escolher Rebentos</button>
+        </article>
+        <article class="plan plan--featured reveal" data-plan="Sprint">
+          <p class="badge">O mais procurado</p>
+          <p class="plan__age mono">Dos 12 aos 17 anos</p>
+          <h3>Sprint</h3>
+          <p class="plan__price"><span class="amt" data-month="32" data-year="320">32</span><span class="cur">€</span><span class="per">/mês</span></p>
+          <ul>
+            <li>4 treinos por semana</li>
+            <li>Licença federativa e provas</li>
+            <li>Avaliação de fisioterapia por período</li>
+          </ul>
+          <button class="btn btn--orange" data-choose="Sprint">Escolher Sprint</button>
+        </article>
+        <article class="plan reveal" data-plan="Passada">
+          <p class="plan__age mono">Adultos 18+</p>
+          <h3>Passada</h3>
+          <p class="plan__price"><span class="amt" data-month="28" data-year="280">28</span><span class="cur">€</span><span class="per">/mês</span></p>
+          <ul>
+            <li>3 treinos + corrida de domingo</li>
+            <li>Plano de ritmo personalizado</li>
+            <li>Provas de veteranos</li>
+          </ul>
+          <button class="btn btn--line" data-choose="Passada">Escolher Passada</button>
+        </article>
+      </div>
+
+      <div class="signup reveal" id="formulario">
+        <form class="form" id="joinForm" novalidate>
+          <h3>Marca o teu treino experimental</h3>
+          <div class="form__row">
+            <label>Nome completo
+              <input type="text" name="name" placeholder="ex.: Rita Costa" required />
+              <small class="err">Indica-nos o teu nome, por favor.</small>
+            </label>
+            <label>Email
+              <input type="email" name="email" placeholder="tu@email.pt" required />
+              <small class="err">Introduz um email válido.</small>
+            </label>
+          </div>
+          <div class="form__row">
+            <label>Plano
+              <select name="plan" id="planSelect" required>
+                <option value="">Seleciona um plano…</option>
+                <option>Rebentos</option>
+                <option>Sprint</option>
+                <option>Passada</option>
+              </select>
+              <small class="err">Escolhe um plano.</small>
+            </label>
+            <label>Dia preferido para começar
+              <select name="day">
+                <option>segunda-feira</option><option>terça-feira</option><option>quarta-feira</option><option>quinta-feira</option><option selected>sábado</option>
+              </select>
+            </label>
+          </div>
+          <label class="check">
+            <input type="checkbox" name="consent" required />
+            <span>Aceito ser contactado(a) sobre o meu treino experimental.</span>
+          </label>
+          <small class="err err--check">Aceita para continuar, por favor.</small>
+          <button type="submit" class="btn btn--orange btn--block">Reservar o meu treino <i aria-hidden="true">→</i></button>
+        </form>
+
+        <div class="success" id="success" hidden>
+          <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"/><path d="M24 41 l11 11 l22 -24"/></svg>
+          <h3>Estás na linha de partida!</h3>
+          <p id="successMsg">Vamos enviar-te um email nas próximas 24 h.</p>
+          <button class="btn btn--line-light" id="resetForm">Inscrever outro atleta</button>
+        </div>
+      </div>
+
+      <div class="faq">
+        <h3 class="reveal">Perguntas rápidas</h3>
+        <div class="faq__item reveal">
+          <button class="faq__q" data-toggle="faq1" aria-expanded="false">Preciso de experiência anterior?<i aria-hidden="true">+</i></button>
+          <div class="collapse" id="faq1"><div><p>De todo. A maioria dos nossos atletas começou do zero. Os treinadores organizam os grupos por nível, não só por idade.</p></div></div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__q" data-toggle="faq2" aria-expanded="false">O que devo levar?<i aria-hidden="true">+</i></button>
+          <div class="collapse" id="faq2"><div><p>Roupa desportiva confortável, sapatilhas de corrida, uma garrafa de água e boa disposição. Os bicos são opcionais e podem ser emprestados.</p></div></div>
+        </div>
+        <div class="faq__item reveal">
+          <button class="faq__q" data-toggle="faq3" aria-expanded="false">Posso suspender a inscrição?<i aria-hidden="true">+</i></button>
+          <div class="collapse" id="faq3"><div><p>Sim — podes suspender até dois meses por ano, por férias ou lesão, sem custos.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PARCEIROS ============ -->
+    <section class="partners">
+      <p class="mono">Parceiros</p>
+      <ul>
+        <li>Fisio+ Fisioterapia</li>
+        <li>Câmara Municipal</li>
+        <li>Pace Desporto</li>
+        <li>Sumos Frescos</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__brand">
+      <h2>Orange<b>Blue</b></h2>
+      <p>Escola de atletismo · Pista municipal ribeirinha, Av. do Rio 12</p>
+    </div>
+    <div class="footer__links">
+      <a href="#quem-somos" data-scroll>Quem somos</a>
+      <a href="#agenda" data-scroll>Agenda</a>
+      <a href="#inscricoes" data-scroll>Inscrições</a>
+    </div>
+    <div class="footer__social">
+      <span>Segue-nos</span>
+      <button class="social" data-toast="A página de Instagram está quase a chegar 📸" aria-label="Instagram">IG</button>
+      <button class="social" data-toast="A página de Facebook está quase a chegar 👍" aria-label="Facebook">FB</button>
+      <button class="social" data-toast="O clube no Strava está quase a chegar 🏃" aria-label="Strava">ST</button>
+    </div>
+    <p class="footer__copy">© 2026 | Orange Blue Running Club</p>
+    <button class="to-top" id="toTop" aria-label="Voltar ao topo">↑</button>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
