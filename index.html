@@ -60,28 +60,32 @@
           <svg class="track" id="trackSvg" viewBox="0 0 600 400">
             <defs>
               <linearGradient id="trackGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#7D1F31"/>
-                <stop offset="1" stop-color="#5B1221"/>
+                <stop offset="0" stop-color="#B94A3D"/>
+                <stop offset="1" stop-color="#7E2D2D"/>
               </linearGradient>
               <pattern id="grass" width="40" height="400" patternUnits="userSpaceOnUse">
                 <rect width="20" height="400" fill="#5DBD67"/>
                 <rect x="20" width="20" height="400" fill="#3F8F4E"/>
               </pattern>
             </defs>
+
             <path d="M170 40 H430 A160 160 0 0 1 430 360 H170 A160 160 0 0 1 170 40Z" fill="url(#trackGrad)"/>
             <path d="M170 115 H430 A85 85 0 0 1 430 285 H170 A85 85 0 0 1 170 115Z" fill="url(#grass)"/>
-            <g fill="none" stroke="#FFF6EC" stroke-width="1.6" opacity=".9">
+
+            <g fill="none" stroke="#FFF6EC" stroke-width="2" opacity=".96">
               <path d="M170 40 H430 A160 160 0 0 1 430 360 H170 A160 160 0 0 1 170 40Z"/>
-              <path d="M170 95 H430 A105 105 0 0 1 430 305 H170 A105 105 0 0 1 170 95Z"/>
+              <path d="M170 80 H430 A120 120 0 0 1 430 320 H170 A120 120 0 0 1 170 80Z"/>
               <path d="M170 150 H430 A50 50 0 0 1 430 250 H170 A50 50 0 0 1 170 150Z"/>
-              <path d="M170 205 H430 A5 5 0 0 1 430 195 H170 A5 5 0 0 1 170 205Z"/>
+              <path d="M170 215 H430 A15 15 0 0 1 430 185 H170 A15 15 0 0 1 170 215Z"/>
             </g>
-            <g fill="none" stroke="#FFF6EC" stroke-width="1.4" opacity=".55">
-              <circle cx="300" cy="200" r="28"/>
+
+            <g fill="none" stroke="#FFF6EC" stroke-width="1.25" opacity=".8">
+              <circle cx="300" cy="200" r="30"/>
               <line x1="300" y1="115" x2="300" y2="285"/>
               <rect x="190" y="170" width="40" height="60" rx="4"/>
               <rect x="370" y="170" width="40" height="60" rx="4"/>
             </g>
+
             <g>
               <rect x="300" y="40" width="8" height="75" fill="#FFF6EC"/>
               <g fill="#0B1F44">
@@ -96,10 +100,14 @@
                 <rect x="300" y="104" width="4" height="4"/><rect x="304" y="108" width="4" height="4"/>
               </g>
             </g>
-            <g font-family="Space Mono, monospace" font-size="9" fill="#FFF6EC" font-weight="700">
-              <text x="284" y="51">4</text><text x="284" y="99">3</text>
-              <text x="284" y="149">2</text><text x="284" y="199">1</text>
+
+            <g font-family="Space Mono, monospace" font-size="12" fill="#FFF6EC" font-weight="700">
+              <text x="182" y="140">1</text>
+              <text x="204" y="198">2</text>
+              <text x="224" y="258">3</text>
+              <text x="246" y="318">4</text>
             </g>
+
             <g class="runners">
               <circle r="6" fill="#0B1F44" stroke="#FFF6EC" stroke-width="2">
                 <animateMotion dur="7s" repeatCount="indefinite" path="M300 292.5 H170 A92.5 92.5 0 0 1 170 107.5 H430 A92.5 92.5 0 0 1 430 292.5Z"/>
@@ -122,14 +130,12 @@
       </div>
     </section>
 
-    <!-- ============ FAIXA ============ -->
     <div class="ribbon" aria-hidden="true">
       <div class="ribbon__track">
         <span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span><span>✶</span><span>Resistência</span><span>✶</span><span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span><span>✶</span><span>Resistência</span>
       </div>
     </div>
 
-    <!-- ============ QUEM SOMOS ============ -->
     <section class="section about" id="quem-somos">
       <header class="section__head reveal">
         <p class="lane-tag"><span>Pista 01</span> Quem somos</p>
@@ -211,7 +217,6 @@
       </div>
     </section>
 
-    <!-- ============ AGENDA ============ -->
     <section class="section agenda" id="agenda">
       <header class="section__head reveal">
         <p class="lane-tag"><span>Pista 02</span> Agenda</p>
@@ -241,7 +246,6 @@
       </div>
     </section>
 
-    <!-- ============ INSCRIÇÕES ============ -->
     <section class="section join" id="inscricoes">
       <div class="section__head reveal">
         <p class="lane-tag lane-tag--light"><span>Pista 03</span> Inscrições</p>
