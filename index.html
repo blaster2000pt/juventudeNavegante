@@ -198,23 +198,23 @@
           <article class="coach reveal">
             <div class="avatar" style="--hue: var(--blue)"><span>TS</span></div>
             <h4>Tiago Santos</h4>
-            <p class="mono">Saltos e barreiras</p>
+            <p class="mono">Treinador de resistência</p>
             <button class="link-btn" data-toggle="coach2" aria-expanded="false">Biografia <i aria-hidden="true">+</i></button>
-            <div class="collapse" id="coach2"><div><p>Saltador em comprimento que se tornou professor. Famoso pelos esquemas de corrida de balanço desenhados a giz.</p></div></div>
+            <div class="collapse" id="coach2"><div><p>Especialista em trabalho de base e técnica de corrida. Gosta de transformar dúvidas em ritmo.</p></div></div>
           </article>
           <article class="coach reveal">
-            <div class="avatar" style="--hue: var(--navy)"><span>AL</span></div>
-            <h4>Ana Lopes</h4>
-            <p class="mono">Infantis e mini-atletismo</p>
+            <div class="avatar" style="--hue: var(--navy)"><span>AR</span></div>
+            <h4>Ana Rita</h4>
+            <p class="mono">Treinadora de saltos</p>
             <button class="link-btn" data-toggle="coach3" aria-expanded="false">Biografia <i aria-hidden="true">+</i></button>
-            <div class="collapse" id="coach3"><div><p>Professora de Educação Física que criou o programa “Rebentos” — atletismo através de jogos, dos 6 aos 11 anos.</p></div></div>
+            <div class="collapse" id="coach3"><div><p>Ex-atleta de comprimento e triplo com foco em explosão, controlo e técnica.</p></div></div>
           </article>
           <article class="coach reveal">
-            <div class="avatar" style="--hue: #F2A13B"><span>JM</span></div>
-            <h4>João Matos</h4>
-            <p class="mono">Fundo e adultos</p>
+            <div class="avatar" style="--hue: var(--orange-deep)"><span>NM</span></div>
+            <h4>Nuno Maia</h4>
+            <p class="mono">Fisioterapeuta</p>
             <button class="link-btn" data-toggle="coach4" aria-expanded="false">Biografia <i aria-hidden="true">+</i></button>
-            <div class="collapse" id="coach4"><div><p>Maratonista com mais de 40 provas terminadas. Orienta o grupo de ritmo de terça e a volta ao rio de domingo.</p></div></div>
+            <div class="collapse" id="coach4"><div><p>Ajuda os atletas a recuperar melhor, mover-se com confiança e manter o corpo a trabalhar.</p></div></div>
           </article>
         </div>
       </div>
@@ -224,182 +224,198 @@
     <section class="section agenda" id="agenda">
       <header class="section__head reveal">
         <p class="lane-tag"><span>Pista 02</span> Agenda</p>
-        <h2>O que se passa na pista.</h2>
-        <p class="section__sub">Treinos, provas e corridas solidárias para as próximas semanas. Toca num evento para ver os detalhes.</p>
+        <h2>Treinos, desafios e momentos de comunidade.</h2>
       </header>
 
-      <div class="filters reveal" role="tablist" aria-label="Filtrar eventos">
-        <button class="filter is-active" data-filter="all" role="tab" aria-selected="true">Todos</button>
-        <button class="filter" data-filter="training" role="tab" aria-selected="false">Treino</button>
-        <button class="filter" data-filter="competition" role="tab" aria-selected="false">Competição</button>
-        <button class="filter" data-filter="community" role="tab" aria-selected="false">Comunidade</button>
+      <div class="filters reveal" aria-label="Filtros da agenda">
+        <button class="filter is-active" data-filter="all" aria-pressed="true">Tudo</button>
+        <button class="filter" data-filter="training" aria-pressed="false">Treinos</button>
+        <button class="filter" data-filter="competition" aria-pressed="false">Competições</button>
+        <button class="filter" data-filter="community" aria-pressed="false">Comunidade</button>
       </div>
 
-      <ol class="events" id="events"></ol>
+      <ul class="events" id="events" aria-live="polite"></ul>
 
       <div class="week reveal">
-        <h3>Horário semanal de treinos</h3>
-        <div class="week__table" role="table" aria-label="Horário semanal">
-          <div role="row" class="week__row week__row--head">
-            <span role="columnheader">Grupo</span><span role="columnheader">Seg</span><span role="columnheader">Ter</span><span role="columnheader">Qua</span><span role="columnheader">Qui</span><span role="columnheader">Sex</span><span role="columnheader">Sáb</span>
+        <h3>Horário semanal</h3>
+        <div class="week__table">
+          <div class="week__row week__row--head">
+            <span>Treino</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span>
           </div>
-          <div role="row" class="week__row">
-            <span role="cell"><b>Rebentos</b> 6–11</span><span role="cell">17:30</span><span role="cell">—</span><span role="cell">17:30</span><span role="cell">—</span><span role="cell">—</span><span role="cell">10:00</span>
-          </div>
-          <div role="row" class="week__row">
-            <span role="cell"><b>Sprint</b> 12–17</span><span role="cell">18:30</span><span role="cell">18:30</span><span role="cell">—</span><span role="cell">18:30</span><span role="cell">—</span><span role="cell">09:30</span>
-          </div>
-          <div role="row" class="week__row">
-            <span role="cell"><b>Passada</b> adultos</span><span role="cell">—</span><span role="cell">19:45</span><span role="cell">—</span><span role="cell">19:45</span><span role="cell">—</span><span role="cell">08:30</span>
-          </div>
+          <div class="week__row"><span><b>Velocidade</b></span><span>—</span><span>18:00</span><span>—</span><span>18:00</span><span>—</span></div>
+          <div class="week__row"><span><b>Resistência</b></span><span>17:30</span><span>—</span><span>17:30</span><span>—</span><span>17:30</span></div>
+          <div class="week__row"><span><b>Saltos</b></span><span>—</span><span>18:15</span><span>—</span><span>18:15</span><span>—</span></div>
+          <div class="week__row"><span><b>Infantis</b></span><span>16:30</span><span>16:30</span><span>16:30</span><span>16:30</span><span>—</span></div>
         </div>
       </div>
     </section>
 
     <!-- ============ INSCRIÇÕES ============ -->
     <section class="section join" id="inscricoes">
-      <header class="section__head reveal">
+      <div class="section__head reveal">
         <p class="lane-tag lane-tag--light"><span>Pista 03</span> Inscrições</p>
-        <h2>Escolhe a tua pista. <br/>As duas primeiras semanas são grátis.</h2>
-      </header>
+        <h2>Escolhe o teu plano e <em>desenha</em> o teu próximo passo.</h2>
+      </div>
 
       <div class="billing reveal">
         <span id="lblMonthly" class="is-on">Mensal</span>
-        <button class="switch" id="billingSwitch" role="switch" aria-checked="false" aria-label="Alternar para pagamento anual"><span></span></button>
-        <span id="lblYearly">Anual <em>2 meses grátis</em></span>
+        <button class="switch" id="billingSwitch" type="button" aria-checked="false" aria-label="Alternar para anual"><span></span></button>
+        <span id="lblYearly">Anual <em>Economiza 12%</em></span>
       </div>
 
-      <div class="plans">
-        <article class="plan reveal" data-plan="Rebentos">
-          <p class="plan__age mono">Dos 6 aos 11 anos</p>
+      <div class="plans reveal">
+        <article class="plan" data-plan="Rebentos">
+          <div class="plan__age">6–10 anos</div>
           <h3>Rebentos</h3>
-          <p class="plan__price"><span class="amt" data-month="22" data-year="220">22</span><span class="cur">€</span><span class="per">/mês</span></p>
+          <div class="plan__price"><span class="amt" data-month="18" data-year="180">18</span><span class="cur">€</span><span class="per">/mês</span></div>
           <ul>
-            <li>3 treinos por semana</li>
-            <li>Jogos de mini-atletismo</li>
-            <li>T-shirt do clube incluída</li>
+            <li>Treino 1x por semana</li>
+            <li>Material de treino básico</li>
+            <li>Acompanhamento técnico</li>
+            <li>Fichas de evolução</li>
           </ul>
-          <button class="btn btn--line" data-choose="Rebentos">Escolher Rebentos</button>
+          <button class="btn btn--line btn--block" type="button" data-choose="Rebentos">Escolher plano</button>
         </article>
-        <article class="plan plan--featured reveal" data-plan="Sprint">
-          <p class="badge">O mais procurado</p>
-          <p class="plan__age mono">Dos 12 aos 17 anos</p>
+
+        <article class="plan plan--featured is-chosen" data-plan="Sprint">
+          <span class="badge">Mais popular</span>
+          <div class="plan__age">11–16 anos</div>
           <h3>Sprint</h3>
-          <p class="plan__price"><span class="amt" data-month="32" data-year="320">32</span><span class="cur">€</span><span class="per">/mês</span></p>
+          <div class="plan__price"><span class="amt" data-month="28" data-year="280">28</span><span class="cur">€</span><span class="per">/mês</span></div>
           <ul>
-            <li>4 treinos por semana</li>
-            <li>Licença federativa e provas</li>
-            <li>Avaliação de fisioterapia por período</li>
+            <li>Treino 2x por semana</li>
+            <li>Clínica de velocidade</li>
+            <li>Foco em técnica + ritmo</li>
+            <li>Disponibilidade para eventos</li>
           </ul>
-          <button class="btn btn--orange" data-choose="Sprint">Escolher Sprint</button>
+          <button class="btn btn--orange btn--block" type="button" data-choose="Sprint">Escolher plano</button>
         </article>
-        <article class="plan reveal" data-plan="Passada">
-          <p class="plan__age mono">Adultos 18+</p>
+
+        <article class="plan" data-plan="Passada">
+          <div class="plan__age">Adultos</div>
           <h3>Passada</h3>
-          <p class="plan__price"><span class="amt" data-month="28" data-year="280">28</span><span class="cur">€</span><span class="per">/mês</span></p>
+          <div class="plan__price"><span class="amt" data-month="35" data-year="350">35</span><span class="cur">€</span><span class="per">/mês</span></div>
           <ul>
-            <li>3 treinos + corrida de domingo</li>
-            <li>Plano de ritmo personalizado</li>
-            <li>Provas de veteranos</li>
+            <li>Treino de resistência e força</li>
+            <li>Grupo ao fim de semana</li>
+            <li>Progressão individual</li>
+            <li>Suporte de recuperação</li>
           </ul>
-          <button class="btn btn--line" data-choose="Passada">Escolher Passada</button>
+          <button class="btn btn--line btn--block" type="button" data-choose="Passada">Escolher plano</button>
         </article>
       </div>
 
-      <div class="signup reveal" id="formulario">
+      <div class="signup reveal">
         <form class="form" id="joinForm" novalidate>
-          <h3>Marca o teu treino experimental</h3>
+          <h3>Marca a tua sessão experimental</h3>
+
           <div class="form__row">
-            <label>Nome completo
-              <input type="text" name="name" placeholder="ex.: Rita Costa" required />
-              <small class="err">Indica-nos o teu nome, por favor.</small>
+            <label>
+              Nome do atleta
+              <input type="text" name="name" placeholder="Ex.: Maria Silva" />
+              <span class="err">Introduz o nome do atleta.</span>
             </label>
-            <label>Email
-              <input type="email" name="email" placeholder="tu@email.pt" required />
-              <small class="err">Introduz um email válido.</small>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="Ex.: maria@email.com" />
+              <span class="err">Email inválido.</span>
             </label>
           </div>
+
           <div class="form__row">
-            <label>Plano
-              <select name="plan" id="planSelect" required>
-                <option value="">Seleciona um plano…</option>
-                <option>Rebentos</option>
-                <option>Sprint</option>
-                <option>Passada</option>
+            <label>
+              Plano
+              <select name="plan">
+                <option value="">Seleciona</option>
+                <option value="Rebentos">Rebentos</option>
+                <option value="Sprint">Sprint</option>
+                <option value="Passada">Passada</option>
               </select>
-              <small class="err">Escolhe um plano.</small>
+              <span class="err">Seleciona um plano.</span>
             </label>
-            <label>Dia preferido para começar
+            <label>
+              Dia disponível
               <select name="day">
-                <option>segunda-feira</option><option>terça-feira</option><option>quarta-feira</option><option>quinta-feira</option><option selected>sábado</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
+                <option value="Segunda-feira">Segunda-feira</option>
+                <option value="Quarta-feira">Quarta-feira</option>
               </select>
             </label>
           </div>
+
           <label class="check">
-            <input type="checkbox" name="consent" required />
-            <span>Aceito ser contactado(a) sobre o meu treino experimental.</span>
+            <input type="checkbox" name="consent" />
+            <span>Concordo em receber informações sobre treino e próximas sessões.</span>
           </label>
-          <small class="err err--check">Aceita para continuar, por favor.</small>
-          <button type="submit" class="btn btn--orange btn--block">Reservar o meu treino <i aria-hidden="true">→</i></button>
+          <div class="err err--check">Tens de aceitar o consentimento.</div>
+
+          <button class="btn btn--orange btn--block" type="submit">Reservar treino experimental</button>
         </form>
 
         <div class="success" id="success" hidden>
-          <svg viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"/><path d="M24 41 l11 11 l22 -24"/></svg>
-          <h3>Estás na linha de partida!</h3>
-          <p id="successMsg">Vamos enviar-te um email nas próximas 24 h.</p>
-          <button class="btn btn--line-light" id="resetForm">Inscrever outro atleta</button>
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle cx="50" cy="50" r="35"></circle>
+            <path d="M30 52 L44 66 L70 40"></path>
+          </svg>
+          <h3>Treino marcado!</h3>
+          <p id="successMsg">Tudo pronto.</p>
+          <button class="btn btn--line btn--block" id="resetForm" type="button">Inscrever outro atleta</button>
         </div>
       </div>
 
-      <div class="faq">
-        <h3 class="reveal">Perguntas rápidas</h3>
-        <div class="faq__item reveal">
-          <button class="faq__q" data-toggle="faq1" aria-expanded="false">Preciso de experiência anterior?<i aria-hidden="true">+</i></button>
-          <div class="collapse" id="faq1"><div><p>De todo. A maioria dos nossos atletas começou do zero. Os treinadores organizam os grupos por nível, não só por idade.</p></div></div>
+      <div class="faq reveal">
+        <h3>Perguntas frequentes</h3>
+        <div class="faq__item">
+          <button class="faq__q" data-toggle="faq1" aria-expanded="false">Preciso de experiência? <i aria-hidden="true">+</i></button>
+          <div class="collapse" id="faq1"><div><p>Não. Os grupos começam com base técnica e progressão gradual, para que qualquer pessoa possa entrar em segurança.</p></div></div>
         </div>
-        <div class="faq__item reveal">
-          <button class="faq__q" data-toggle="faq2" aria-expanded="false">O que devo levar?<i aria-hidden="true">+</i></button>
-          <div class="collapse" id="faq2"><div><p>Roupa desportiva confortável, sapatilhas de corrida, uma garrafa de água e boa disposição. Os bicos são opcionais e podem ser emprestados.</p></div></div>
+        <div class="faq__item">
+          <button class="faq__q" data-toggle="faq2" aria-expanded="false">O que leva para a primeira sessão? <i aria-hidden="true">+</i></button>
+          <div class="collapse" id="faq2"><div><p>Ropa confortável, ténis, água e uma vontade saudável de explorar o movimento. Tudo o resto pode ser indicado pela equipa.</p></div></div>
         </div>
-        <div class="faq__item reveal">
-          <button class="faq__q" data-toggle="faq3" aria-expanded="false">Posso suspender a inscrição?<i aria-hidden="true">+</i></button>
-          <div class="collapse" id="faq3"><div><p>Sim — podes suspender até dois meses por ano, por férias ou lesão, sem custos.</p></div></div>
+        <div class="faq__item">
+          <button class="faq__q" data-toggle="faq3" aria-expanded="false">Existem treinos para adultos? <i aria-hidden="true">+</i></button>
+          <div class="collapse" id="faq3"><div><p>Sim. Temos formação para iniciantes, manutenção e competição, sempre adaptada ao nível e objetivos do grupo.</p></div></div>
         </div>
       </div>
     </section>
 
-    <!-- ============ PARCEIROS ============ -->
-    <section class="partners">
-      <p class="mono">Parceiros</p>
+    <div class="partners reveal" aria-label="Parceiros do clube">
+      <p>Parceiros</p>
       <ul>
-        <li>Fisio+ Fisioterapia</li>
-        <li>Câmara Municipal</li>
-        <li>Pace Desporto</li>
-        <li>Sumos Frescos</li>
+        <li>Alcochete</li>
+        <li>Ribeira</li>
+        <li>Vitalidade</li>
+        <li>Run Lab</li>
       </ul>
-    </section>
+    </div>
   </main>
 
   <footer class="footer">
     <div class="footer__brand">
       <h2>Juventude <b>Navegante</b></h2>
-      <p>Escola de atletismo · Alcochete</p>
+      <p>Escola de atletismo em Alcochete · Desde 2024</p>
     </div>
-    <div class="footer__links">
+
+    <nav class="footer__links" aria-label="Links do rodapé">
+      <a href="#inicio" data-scroll>Início</a>
       <a href="#quem-somos" data-scroll>Quem somos</a>
       <a href="#agenda" data-scroll>Agenda</a>
       <a href="#inscricoes" data-scroll>Inscrições</a>
-    </div>
+    </nav>
+
     <div class="footer__social">
-      <span>Segue-nos</span>
-      <button class="social" data-toast="A página de Instagram está quase a chegar 📸" aria-label="Instagram">IG</button>
-      <button class="social" data-toast="A página de Facebook está quase a chegar 👍" aria-label="Facebook">FB</button>
-      <button class="social" data-toast="O clube no Strava está quase a chegar 🏃" aria-label="Strava">ST</button>
+      <span>Siga-nos</span>
+      <button class="social" type="button" data-toast="Instagram · @juventudenavegante">IG</button>
+      <button class="social" type="button" data-toast="Facebook · Juventude Navegante">FB</button>
+      <button class="social" type="button" data-toast="YouTube · Juventude Navegante">YT</button>
     </div>
-    <p class="footer__copy">© 2026 | Juventude Navegante</p>
-    <button class="to-top" id="toTop" aria-label="Voltar ao topo">↑</button>
+
+    <p class="footer__copy">© 2025 Juventude Navegante. Todos os direitos reservados.</p>
   </footer>
 
+  <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo">↑</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="script.js"></script>
