@@ -60,26 +60,21 @@
           <svg class="track" id="trackSvg" viewBox="0 0 600 400">
             <defs>
               <linearGradient id="trackGrad" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#FF7A2E"/>
-                <stop offset="1" stop-color="#E4501A"/>
+                <stop offset="0" stop-color="#7D1F31"/>
+                <stop offset="1" stop-color="#5B1221"/>
               </linearGradient>
               <pattern id="grass" width="40" height="400" patternUnits="userSpaceOnUse">
-                <rect width="20" height="400" fill="#5DBE6A"/>
-                <rect x="20" width="20" height="400" fill="#4BA55D"/>
+                <rect width="20" height="400" fill="#5DBD67"/>
+                <rect x="20" width="20" height="400" fill="#3F8F4E"/>
               </pattern>
             </defs>
             <path d="M170 40 H430 A160 160 0 0 1 430 360 H170 A160 160 0 0 1 170 40Z" fill="url(#trackGrad)"/>
             <path d="M170 115 H430 A85 85 0 0 1 430 285 H170 A85 85 0 0 1 170 115Z" fill="url(#grass)"/>
             <g fill="none" stroke="#FFF6EC" stroke-width="1.6" opacity=".9">
               <path d="M170 40 H430 A160 160 0 0 1 430 360 H170 A160 160 0 0 1 170 40Z"/>
-              <path d="M170 55 H430 A145 145 0 0 1 430 345 H170 A145 145 0 0 1 170 55Z"/>
-              <path d="M170 70 H430 A130 130 0 0 1 430 330 H170 A130 130 0 0 1 170 70Z"/>
-              <path d="M170 85 H430 A115 115 0 0 1 430 315 H170 A115 115 0 0 1 170 85Z"/>
-              <path d="M170 100 H430 A100 100 0 0 1 430 300 H170 A100 100 0 0 1 170 100Z"/>
-              <path d="M170 115 H430 A85 85 0 0 1 430 285 H170 A85 85 0 0 1 170 115Z"/>
-              <path d="M170 130 H430 A70 70 0 0 1 430 270 H170 A70 70 0 0 1 170 130Z"/>
-              <path d="M170 145 H430 A55 55 0 0 1 430 255 H170 A55 55 0 0 1 170 145Z"/>
-              <path d="M170 160 H430 A40 40 0 0 1 430 240 H170 A40 40 0 0 1 170 160Z"/>
+              <path d="M170 95 H430 A105 105 0 0 1 430 305 H170 A105 105 0 0 1 170 95Z"/>
+              <path d="M170 150 H430 A50 50 0 0 1 430 250 H170 A50 50 0 0 1 170 150Z"/>
+              <path d="M170 205 H430 A5 5 0 0 1 430 195 H170 A5 5 0 0 1 170 205Z"/>
             </g>
             <g fill="none" stroke="#FFF6EC" stroke-width="1.4" opacity=".55">
               <circle cx="300" cy="200" r="28"/>
@@ -102,9 +97,8 @@
               </g>
             </g>
             <g font-family="Space Mono, monospace" font-size="9" fill="#FFF6EC" font-weight="700">
-              <text x="284" y="51">8</text><text x="284" y="66">7</text><text x="284" y="81">6</text>
-              <text x="284" y="96">5</text><text x="284" y="111">4</text><text x="284" y="126">3</text>
-              <text x="284" y="141">2</text><text x="284" y="156">1</text>
+              <text x="284" y="51">4</text><text x="284" y="99">3</text>
+              <text x="284" y="149">2</text><text x="284" y="199">1</text>
             </g>
             <g class="runners">
               <circle r="6" fill="#0B1F44" stroke="#FFF6EC" stroke-width="2">
@@ -119,14 +113,11 @@
               <circle r="6" fill="#0B1F44" stroke="#FFB27A" stroke-width="2">
                 <animateMotion dur="8.8s" repeatCount="indefinite" path="M300 337.5 H170 A137.5 137.5 0 0 1 170 62.5 H430 A137.5 137.5 0 0 1 430 337.5Z"/>
               </circle>
-              <circle r="6" fill="#FFF6EC" stroke="#1F4FD1" stroke-width="2">
-                <animateMotion dur="9.4s" repeatCount="indefinite" path="M300 352.5 H170 A152.5 152.5 0 0 1 170 47.5 H430 A152.5 152.5 0 0 1 430 352.5Z"/>
-              </circle>
             </g>
           </svg>
         </div>
         <div class="chip chip--a"><span class="mono" id="stopwatch">00:00,00</span><small>cronómetro em direto</small></div>
-        <div class="chip chip--b"><b>8 pistas</b><small>Clínica de velocidade ao sábado</small></div>
+        <div class="chip chip--b"><b>4 pistas</b><small>Clínica de velocidade ao sábado</small></div>
         <div class="sun"></div>
       </div>
     </section>
@@ -134,7 +125,7 @@
     <!-- ============ FAIXA ============ -->
     <div class="ribbon" aria-hidden="true">
       <div class="ribbon__track">
-        <span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span><span>✶</span><span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span>
+        <span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span><span>✶</span><span>Resistência</span><span>✶</span><span>Velocidade</span><span>✶</span><span>Barreiras</span><span>✶</span><span>Salto em comprimento</span><span>✶</span><span>Salto em altura</span><span>✶</span><span>Estafetas</span><span>✶</span><span>Resistência</span>
       </div>
     </div>
 
