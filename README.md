@@ -1,4 +1,4 @@
-# Orange Blue Running Club
+# Juventude Navegante
 
 Site de página única (*one-page*) para uma escola de atletismo. Está escrito em português de Portugal e usa apenas HTML, CSS e JavaScript, sem frameworks nem passo de *build*.
 
@@ -9,7 +9,7 @@ Site de página única (*one-page*) para uma escola de atletismo. Está escrito 
 ## 1. Estrutura de ficheiros
 
 ```
-Orange Blue Running Club/
+Juventude Navegante/
 ├── index.html   → estrutura e conteúdos (todo o texto do site)
 ├── styles.css   → design: cores, tipografia, layout, animações, responsivo
 ├── script.js    → interatividade: menu, agenda, inscrições, formulário
@@ -177,7 +177,7 @@ No rodapé, troque cada `<button class="social" data-toast="…">` por uma liga�
 
 - **Campos obrigatórios:** nome, email (validado por expressão regular), plano e consentimento.
 - **Quando é válido:** o formulário é ocultado e aparece o painel `#success`, com uma mensagem personalizada. O botão "Inscrever outro atleta" repõe o formulário.
-- **Limitação:** os dados **não são enviados** para nenhum servidor, porque o site é estático. Para receber inscrições reais, ligue o `<form>` a um serviço como Formspree, Google Forms ou Netlify Forms.
+- **Limitação:** os dados **não são enviados** para nenhum servidor, porque o site é estático. Para receber inscrições reais, ligue o `<form>` a um serviço como Formspree, Google Forms ou um backend próprio.
 
 ---
 
