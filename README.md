@@ -4,6 +4,13 @@ Site de página única (*one-page*) para uma escola de atletismo. Está escrito 
 
 > Para ver o site, basta abrir `index.html` no browser. Para o publicar, use o GitHub Pages: **Settings → Pages → Deploy from a branch → `main` / `(root)`**.
 
+## Atualizações recentes
+
+- Ajustada a área interior da pista para verde de relva, mantendo o perímetro em cor laranja.
+- Atualizada a representação visual da pista para mostrar 8 faixas/lane markers na página inicial.
+- Substituído o logótipo do cabeçalho pelo ficheiro `images/juna logo.jpg`.
+- Documentação alinhada com a identidade do clube: nome atualizado para Juventude Navegante, local em Alcochete e ano de origem 2024.
+
 ---
 
 ## 1. Estrutura de ficheiros
@@ -13,6 +20,8 @@ Juventude Navegante/
 ├── index.html   → estrutura e conteúdos (todo o texto do site)
 ├── styles.css   → design: cores, tipografia, layout, animações, responsivo
 ├── script.js    → interatividade: menu, agenda, inscrições, formulário
+├── images/
+│   └── juna logo.jpg → logótipo oficial do clube usado no cabeçalho principal
 └── README.md    → este documento
 ```
 
@@ -23,6 +32,7 @@ Cada ficheiro tem uma responsabilidade:
 | Conteúdo | `index.html` | Secções, textos, planos, FAQ, rodapé |
 | Apresentação | `styles.css` | Paleta, tipos de letra, componentes, *breakpoints* |
 | Comportamento | `script.js` | Eventos, dados da agenda, validação |
+| Branding | `images/juna logo.jpg` | Logótipo do clube exibido na navegação |
 
 ---
 
