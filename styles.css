@@ -357,11 +357,19 @@
  .faq__q i { font-style: normal; font-size: 1.5rem; color: var(--orange); transition: transform .3s var(--ease); }
  .faq .collapse p { color: rgba(255,246,236,.75); padding: 0 0 1.2rem; }
  
+ /* Parceiros */
  .partners { padding: 3rem clamp(1rem, 5vw, 4rem); text-align: center; }
- .partners > p { text-transform: uppercase; letter-spacing: .15em; font-size: .78rem; color: var(--muted); }
- .partners ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 3rem; }
- .partners li { font-family: var(--display); font-weight: 800; font-size: 1.4rem; color: var(--navy); opacity: .45; transition: opacity .3s, color .3s; }
- .partners li:hover { opacity: 1; color: var(--orange); }
+ .partners > p { text-transform: uppercase; letter-spacing: .15em; font-size: .78rem; color: var(--muted); margin-bottom: 2rem; }
+ /* Lista de parceiros */
+ .partners ul { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5rem 3rem; list-style: none; padding: 0; margin: 0; }
+ /* Cada parceiro */
+ .partners li { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+ /* Logótipos - sem efeitos */
+ .partners li img { width: 130px; height: 90px; object-fit: contain; display: block; opacity: 1; transform: none; transition: none; }
+ /* Nomes dos parceiros */
+ .partners li span { font-family: var(--display); font-weight: 800; font-size: 1.4rem; color: var(--navy); opacity: .45; transition: opacity .3s, color .3s; }
+ /* Hover apenas no texto */
+ .partners li:hover span { opacity: 1; color: var(--orange); }
  
  .footer {
    background: var(--ink); color: var(--cream); padding: 3.5rem clamp(1rem, 5vw, 4rem) 2rem;
@@ -372,10 +380,13 @@
  .footer__links { display: flex; flex-direction: column; gap: .5rem; }
  .footer__links a { text-decoration: none; color: rgba(255,246,236,.8); }
  .footer__links a:hover { color: var(--orange); }
+  /* Redes sociais */
  .footer__social { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
  .footer__social span { width: 100%; font-family: var(--mono); font-size: .78rem; text-transform: uppercase; color: var(--peach); }
- .social { width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(255,246,236,.25); background: none; color: var(--cream); font-family: var(--mono); font-weight: 700; font-size: .8rem; }
- .social:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-3px); }
+ .social { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; border: 2px solid rgba(255,246,236,.25); background: none; color: var(--cream); text-decoration: none; transition: color .3s, border-color .3s, background .3s, transform .3s; }
+ .social svg { width: 21px; height: 21px; display: block; }
+ .social:hover { background: var(--orange); border-color: var(--orange); color: #fff; transform: translateY(-3px); }
+ .social:focus-visible { outline: 2px solid var(--peach); outline-offset: 4px; }
  .footer__copy { grid-column: 1 / -1; border-top: 1px solid rgba(255,246,236,.12); padding-top: 1.5rem; margin: 0; color: rgba(255,246,236,.5); font-size: .85rem; }
  .to-top {
    position: fixed; right: 1.2rem; bottom: 1.2rem; width: 50px; height: 50px; border-radius: 50%; border: 0;
