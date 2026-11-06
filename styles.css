@@ -13,6 +13,7 @@
    --grass: #5DBD67;
    --grass-deep: #3F8F4E;
    --yellow: #F3C85A;
+   --yellow-deep: #D4A73A;
    --radius: 22px;
    --display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
    --body: "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -56,8 +57,8 @@
  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(11,31,68,.5); }
  .btn:hover i { transform: translateX(4px); }
  .btn:active { transform: translateY(0); }
- .btn--orange { --bg: var(--orange); --fg: #fff; }
- .btn--orange:hover { background: var(--orange-deep); box-shadow: 0 12px 26px -10px rgba(228,80,26,.7); }
+ .btn--orange { --bg: var(--yellow); --fg: #fff; }
+ .btn--orange:hover { background: var(--yellow-deep); box-shadow: 0 12px 26px -10px rgba(212,167,58,.7); }
  .btn--ghost { --bg: transparent; --fg: var(--navy); border-color: var(--navy); }
  .btn--ghost:hover { --bg: var(--navy); --fg: var(--cream); }
  .btn--line { --bg: transparent; --fg: var(--navy); border-color: rgba(11,31,68,.25); }
