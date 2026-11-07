@@ -267,6 +267,27 @@
  .event__body ul { display: flex; gap: 1.2rem; font-size: .85rem; font-family: var(--mono); color: var(--navy); flex-wrap: wrap; }
  .event__actions { display: flex; gap: .6rem; }
  .reserve.is-done { --bg: var(--blue); }
+
+ .contacts__grid { display: grid; grid-template-columns: minmax(260px, .85fr) 1.15fr; gap: 1.2rem; }
+ .contacts__details { display: grid; align-content: start; gap: .9rem; }
+ .contacts__card, .contacts__map {
+   background: #fff; border: 1px solid rgba(11,31,68,.07); border-radius: var(--radius); overflow: hidden;
+ }
+ .contacts__card { padding: 1.4rem; }
+ .contacts__label { display: block; margin-bottom: .35rem; color: var(--muted); font-family: var(--mono); font-size: .75rem; text-transform: uppercase; }
+ .contacts__value, .contacts__card h3 { color: var(--navy); font-family: var(--display); font-size: 1.55rem; font-weight: 700; text-decoration: none; }
+ .contacts__value:hover, .contacts__map-link:hover { color: var(--blue); }
+ .contacts__card p { margin: .35rem 0 .7rem; color: var(--muted); }
+ .contacts__map-link { color: var(--navy); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+ .contacts__whatsapp {
+   display: flex; align-items: center; justify-content: center; gap: .7rem; padding: 1rem 1.2rem;
+   border-radius: 999px; background: #25D366; color: #073B20; font-weight: 800; text-align: center; text-decoration: none;
+   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+ }
+ .contacts__whatsapp:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(7,59,32,.5); }
+ .contacts__whatsapp svg { width: 25px; height: 25px; flex: 0 0 auto; }
+ .contacts__map { min-height: 390px; }
+ .contacts__map iframe { display: block; width: 100%; height: 100%; min-height: 390px; border: 0; }
  
  .week { margin-top: 4rem; background: var(--navy); color: var(--cream); border-radius: calc(var(--radius) + 6px); padding: clamp(1.5rem, 4vw, 2.5rem); position: relative; overflow: hidden; }
  .week::before { content: ""; position: absolute; right: -80px; top: -80px; width: 260px; height: 260px; border-radius: 50%; border: 30px solid var(--orange); opacity: .25; }
@@ -324,6 +345,12 @@
  .badge { position: absolute; top: -14px; right: 1.5rem; background: var(--yellow); color: var(--navy); font-family: var(--mono); font-size: .72rem; text-transform: uppercase; padding: .35em .9em; border-radius: 999px; }
  
  .signup { margin-top: 4rem; background: var(--cream); color: var(--navy); border-radius: calc(var(--radius) + 6px); padding: clamp(1.5rem, 4vw, 3rem); max-width: 860px; }
+ .plan-form[hidden] { display: none; }
+ .plan-form h3 { font-size: 2rem; margin-bottom: 1.5rem; }
+ .plan-form__content { display: grid; grid-template-columns: 1fr 240px; align-items: center; gap: 2rem; }
+ .plan-form__content p { color: var(--muted); margin-bottom: 1.25rem; }
+ .plan-form__link { width: fit-content; }
+ .plan-form__qr { display: block; width: 100%; height: auto; border-radius: 12px; }
  .form h3, .success h3 { font-size: 2rem; margin-bottom: 1.5rem; }
  .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
  .form label { display: flex; flex-direction: column; gap: .4rem; font-weight: 700; font-size: .9rem; margin-bottom: 1rem; }
@@ -432,8 +459,12 @@
    .hero { grid-template-columns: 1fr; padding-top: 6.5rem; }
    .hero__visual { max-width: 520px; width: 100%; margin: 0 auto; }
    .about__grid { grid-template-columns: 1fr; }
+   .plan-form__content { grid-template-columns: 1fr; }
+   .plan-form__qr { max-width: 240px; }
    .form__row { grid-template-columns: 1fr; gap: 0; }
    .event__body > div > div { padding-left: 1.4rem; }
+   .contacts__grid { grid-template-columns: 1fr; }
+   .contacts__map, .contacts__map iframe { min-height: 340px; }
    .footer { grid-template-columns: 1fr; }
    .week__row { font-size: .78rem; grid-template-columns: 1.5fr repeat(5, 1fr); }
  }

@@ -56,7 +56,7 @@
   onScroll();
   toTop.addEventListener("click", () => scrollToId("inicio"));
 
-  const sections = ["inicio", "quem-somos", "agenda", "inscricoes"].map((id) =>
+  const sections = ["inicio", "quem-somos", "agenda", "contactos", "inscricoes"].map((id) =>
     document.getElementById(id),
   );
   const spy = new IntersectionObserver(
@@ -312,23 +312,43 @@
 
   /* ---------- billing switch ---------- */
   const billing = $("#billingSwitch");
-  billing.addEventListener("click", () => {
-    const yearly = billing.getAttribute("aria-checked") !== "true";
-    billing.setAttribute("aria-checked", String(yearly));
-    $("#lblMonthly").classList.toggle("is-on", !yearly);
-    $("#lblYearly").classList.toggle("is-on", yearly);
-    $$(".plan__price").forEach((p) => {
-      const amt = $(".amt", p);
-      amt.textContent = yearly ? amt.dataset.year : amt.dataset.month;
-      $(".per", p).textContent = yearly ? "/ano" : "/mês";
-      amt.classList.remove("flip");
-      void amt.offsetWidth;
-      amt.classList.add("flip");
+  if (billing) {
+    billing.addEventListener("click", () => {
+      const yearly = billing.getAttribute("aria-checked") !== "true";
+      billing.setAttribute("aria-checked", String(yearly));
+      $("#lblMonthly").classList.toggle("is-on", !yearly);
+      $("#lblYearly").classList.toggle("is-on", yearly);
+      $$(".plan__price").forEach((p) => {
+        const amt = $(".amt", p);
+        amt.textContent = yearly ? amt.dataset.year : amt.dataset.month;
+        $(".per", p).textContent = yearly ? "/ano" : "/mês";
+        amt.classList.remove("flip");
+        void amt.offsetWidth;
+        amt.classList.add("flip");
+      });
     });
-  });
+  }
 
   /* ---------- plan choose ---------- */
   const planSelect = $("#planSelect");
+  const planForm = $("#planForm");
+  const planFormTitle = $("#planFormTitle");
+  const planFormLink = $("#planFormLink");
+  const planFormQr = $("#planFormQr");
+  const planForms = {
+    "Escola de atletismo": {
+      url: "https://forms.gle/vGCrbrNZmsZP7H5y6",
+      qr: "images/qr-plano-escola-atletismo.png",
+    },
+    Competição: {
+      url: "https://forms.gle/vGCrbrNZmsZP7H5y6",
+      qr: "images/qr-plano-competicao.png",
+    },
+    "Sócio Navegante": {
+      url: "https://forms.gle/RANdVUvJaWkeo52G7",
+      qr: "images/qr-plano-socio-navegante.png",
+    },
+  };
   const highlightPlan = (name) =>
     $$(".plan").forEach((p) =>
       p.classList.toggle("is-chosen", p.dataset.plan === name),
@@ -336,15 +356,18 @@
   $$("[data-choose]").forEach((b) =>
     b.addEventListener("click", () => {
       const name = b.dataset.choose;
+      const formDetails = planForms[name];
+      if (!formDetails) return;
       planSelect.value = name;
       planSelect.closest("label").classList.remove("invalid");
       highlightPlan(name);
-      scrollToId("formulario");
-      setTimeout(
-        () => $("#joinForm input[name=name]").focus({ preventScroll: true }),
-        600,
-      );
-      toast(`Plano ${name} selecionado — faltam só alguns dados.`);
+      planFormTitle.textContent = `Inscrição — ${name}`;
+      planFormLink.href = formDetails.url;
+      planFormQr.src = formDetails.qr;
+      planFormQr.alt = `Código QR para o formulário do plano ${name}`;
+      planForm.hidden = false;
+      scrollToId("planForm");
+      toast(`Plano ${name} selecionado.`);
     }),
   );
   planSelect.addEventListener("change", () => highlightPlan(planSelect.value));

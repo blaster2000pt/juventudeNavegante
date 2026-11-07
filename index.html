@@ -22,7 +22,7 @@
       <a href="#inicio" data-scroll>Início</a>
       <a href="#quem-somos" data-scroll>Quem somos</a>
       <a href="#agenda" data-scroll>Agenda</a>
-      <a href="#inscricoes" data-scroll>Inscrições</a>
+      <a href="#contactos" data-scroll>Contactos</a>
       <a href="#inscricoes" data-scroll class="btn btn--small btn--orange nav__cta">Junta-te a nós</a>
     </nav>
     <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navLinks">
@@ -250,9 +250,47 @@
       </div>
     </section>
 
+    <section class="section agenda contacts" id="contactos">
+      <header class="section__head reveal">
+        <p class="lane-tag"><span>Pista 03</span> Contactos</p>
+        <h2>Vem treinar connosco em Alcochete.</h2>
+      </header>
+
+      <div class="contacts__grid reveal">
+        <div class="contacts__details">
+          <article class="contacts__card">
+            <span class="contacts__label">Telefone</span>
+            <a class="contacts__value" href="tel:+351928377370">+351 928 377 370</a>
+          </article>
+          <article class="contacts__card">
+            <span class="contacts__label">Local de treino</span>
+            <h3>Parque do Valbom</h3>
+            <p>Rua da Liberdade, Alcochete</p>
+            <a class="contacts__map-link" href="https://www.google.com/maps/search/?api=1&amp;query=38.747209637746415%2C-8.967164681516717" target="_blank" rel="noopener noreferrer">
+              Abrir no Google Maps <span aria-hidden="true">↗</span>
+            </a>
+          </article>
+          <a class="contacts__whatsapp" href="https://wa.me/351928377370" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path fill="currentColor" d="M16.04 3C8.87 3 3.04 8.78 3.04 15.9c0 2.28.6 4.5 1.75 6.46L3 29l6.84-1.78a13.1 13.1 0 0 0 6.2 1.56h.01c7.16 0 13-5.8 13-12.92a12.8 12.8 0 0 0-3.82-9.13A13 13 0 0 0 16.04 3Zm0 23.6h-.01a10.9 10.9 0 0 1-5.55-1.51l-.4-.24-4.06 1.06 1.08-3.93-.26-.4a10.65 10.65 0 0 1-1.67-5.68c0-6 4.89-10.87 10.9-10.87 2.91 0 5.65 1.13 7.71 3.18a10.78 10.78 0 0 1 3.2 7.7c0 6-4.9 10.89-10.94 10.89Zm5.99-8.14c-.33-.16-1.95-.96-2.25-1.07-.3-.1-.52-.16-.74.17-.22.32-.85 1.07-1.04 1.29-.19.22-.39.24-.72.08-.33-.16-1.39-.51-2.65-1.63-.98-.87-1.64-1.94-1.83-2.27-.19-.32-.02-.5.14-.66.15-.14.33-.38.49-.57.16-.19.22-.32.33-.54.11-.22.05-.41-.03-.57-.08-.16-.74-1.77-1.01-2.43-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.4-.3.32-1.15 1.12-1.15 2.72s1.18 3.16 1.34 3.38c.16.21 2.32 3.53 5.62 4.95.79.34 1.4.55 1.88.7.79.25 1.51.21 2.08.13.63-.1 1.95-.8 2.22-1.56.28-.77.28-1.43.2-1.56-.09-.14-.3-.22-.63-.38Z"/>
+            </svg>
+            Falar connosco pelo WhatsApp
+          </a>
+        </div>
+        <div class="contacts__map">
+          <iframe
+            src="https://maps.google.com/maps?q=38.747209637746415%2C-8.967164681516717&amp;z=16&amp;output=embed"
+            title="Mapa do Parque do Valbom, Alcochete"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
     <section class="section join" id="inscricoes">
       <div class="section__head reveal">
-        <p class="lane-tag lane-tag--light"><span>Pista 03</span> Inscrições</p>
+        <p class="lane-tag lane-tag--light"><span>Pista 04</span> Inscrições</p>
         <h2>Escolhe o teu plano e <em>desenha</em> o teu próximo passo.</h2>
       </div>
 
@@ -263,7 +301,7 @@
       </div> -->
 
       <div class="plans reveal">
-        <article class="plan" data-plan="Rebentos">
+        <article class="plan" data-plan="Escola de atletismo">
           <div class="plan__age">6–10 anos</div>
           <h3>Escola de atletismo</h3>
           <div class="plan__price"><span class="amt" data-month="18" data-year="180">23</span><span class="cur">€</span><span class="per">/mês</span></div>
@@ -273,10 +311,10 @@
             <li>Acompanhamento técnico</li>
             <li>Competição</li>
           </ul>
-          <button class="btn btn--line btn--block" type="button" data-choose="Rebentos">Escolher plano</button>
+          <button class="btn btn--line btn--block" type="button" data-choose="Escola de atletismo">Escolher plano</button>
         </article>
 
-        <article class="plan plan--featured is-chosen" data-plan="Sprint">
+        <article class="plan plan--featured is-chosen" data-plan="Competição">
           <span class="badge">Mais popular</span>
           <div class="plan__age">11–16 anos</div>
           <h3>Competição</h3>
@@ -287,10 +325,10 @@
             <li>Foco em técnica + ritmo</li>
             <li>Competição</li>
           </ul>
-          <button class="btn btn--orange btn--block" type="button" data-choose="Sprint">Escolher plano</button>
+          <button class="btn btn--orange btn--block" type="button" data-choose="Competição">Escolher plano</button>
         </article>
 
-        <article class="plan" data-plan="Passada">
+        <article class="plan" data-plan="Sócio Navegante">
           <div class="plan__age">Adultos</div>
           <h3>Sócio Navegante</h3>
           <div class="plan__price"><span class="amt" data-month="35" data-year="350">12</span><span class="cur">€</span><span class="per">/ano [valor quota]</span></div>
@@ -300,8 +338,21 @@
             <li>Faz parte da nossa equipa e da nossa família</li>
             <li>Apoia a formação dos nossos jovens atletas</li>
           </ul>
-          <button class="btn btn--line btn--block" type="button" data-choose="Passada">Escolher plano</button>
+          <button class="btn btn--line btn--block" type="button" data-choose="Sócio Navegante">Escolher plano</button>
         </article>
+      </div>
+
+      <div class="signup plan-form" id="planForm" aria-live="polite" hidden>
+        <h3 id="planFormTitle">Inscrição</h3>
+        <div class="plan-form__content">
+          <div>
+            <p>Preenche o formulário online ou lê o código QR com a câmara do telemóvel.</p>
+            <a class="btn btn--orange plan-form__link" id="planFormLink" href="#" target="_blank" rel="noopener noreferrer">
+              Abrir formulário
+            </a>
+          </div>
+          <img class="plan-form__qr" id="planFormQr" alt="" width="240" height="240" />
+        </div>
       </div>
 
       <div class="signup reveal">
@@ -324,11 +375,11 @@
           <div class="form__row">
             <label>
               Plano
-              <select name="plan">
+              <select id="planSelect" name="plan">
                 <option value="">Seleciona</option>
-                <option value="Rebentos">Rebentos</option>
-                <option value="Sprint">Sprint</option>
-                <option value="Passada">Passada</option>
+                <option value="Escola de atletismo">Escola de atletismo</option>
+                <option value="Competição">Competição</option>
+                <option value="Sócio Navegante">Sócio Navegante</option>
               </select>
               <span class="err">Seleciona um plano.</span>
             </label>
@@ -410,6 +461,7 @@
       <a href="#inicio" data-scroll>Início</a>
       <a href="#quem-somos" data-scroll>Quem somos</a>
       <a href="#agenda" data-scroll>Agenda</a>
+      <a href="#contactos" data-scroll>Contactos</a>
       <a href="#inscricoes" data-scroll>Inscrições</a>
     </nav>
 
