@@ -185,7 +185,7 @@
  
  .ribbon { background: var(--navy); color: var(--cream); overflow: hidden; transform: rotate(-1.5deg); margin: 0 -2%; padding: 1rem 0; }
  .ribbon__track { display: flex; gap: 2rem; width: max-content; animation: marquee 35s linear infinite; font-family: var(--display); font-weight: 800; font-size: clamp(1.3rem, 2.5vw, 2rem); }
- .ribbon__track span:nth-child(even) { color: var(--orange); }
+ .ribbon__track span:nth-child(even) { color: var(--yellow-deep); }
  @keyframes marquee { to { transform: translateX(-50%); } }
  
  .section { padding: clamp(5rem, 10vw, 8rem) clamp(1rem, 5vw, 4rem); max-width: 1280px; margin: 0 auto; }
@@ -193,7 +193,7 @@
  .section__head h2 { font-size: clamp(2.3rem, 5vw, 4rem); font-weight: 800; color: var(--navy); }
  .section__head h2 em { font-style: normal; color: var(--yellow); }
  .section__sub { color: var(--muted); margin-top: 1rem; font-size: 1.1rem; }
- .lane-tag { font-family: var(--mono); text-transform: uppercase; font-size: .8rem; letter-spacing: .1em; display: flex; align-items: center; gap: .8em; color: var(--blue); }
+ .lane-tag { font-family: var(--mono); text-transform: uppercase; font-size: 1.1rem; letter-spacing: .1em; display: flex; align-items: center; gap: .8em; color: var(--blue); }
  .lane-tag span { background: var(--yellow); color: var(--navy); padding: .25em .7em; border-radius: 6px; }
  
  .about__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
@@ -365,8 +365,10 @@
  .partners ul { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 2.5rem 3rem; list-style: none; padding: 0; margin: 0; }
  /* Cada parceiro */
  .partners li { display: flex; flex-direction: column; align-items: center; gap: .8rem; }
+ /* Logótipos - sem linha de link */
+ .partners ul li a { text-decoration: none; color: inherit; }
  /* Logótipos - sem efeitos */
- .partners li img { width: 130px; height: 90px; object-fit: contain; display: block; opacity: 1; transform: none; transition: none; }
+ .partners li img { width: 260px; height: 220px; object-fit: contain; display: block; opacity: 1; transform: none; transition: none; }
  /* Nomes dos parceiros */
  .partners li span { font-family: var(--display); font-weight: 800; font-size: 1.4rem; color: var(--navy); opacity: .45; transition: opacity .3s, color .3s; }
  /* Hover apenas no texto */
