@@ -276,7 +276,6 @@
  .contacts__card { padding: 1.4rem; }
  .contacts__label { display: block; margin-bottom: .35rem; color: var(--muted); font-family: var(--mono); font-size: .75rem; text-transform: uppercase; }
  .contacts__value, .contacts__card h3 { color: var(--navy); font-family: var(--display); font-size: 1.55rem; font-weight: 700; text-decoration: none; }
- .contacts__value:hover, .contacts__map-link:hover { color: var(--blue); }
  .contacts__card p { margin: .35rem 0 .7rem; color: var(--muted); }
  .contacts__map-link { color: var(--navy); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 3px; }
  .contacts__whatsapp {
