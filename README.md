@@ -63,7 +63,7 @@ flowchart TD
 | `#quem-somos` | Quem somos (Pista 01) | História do clube (expansível), valores e equipa técnica com biografias expansíveis |
 | `#agenda` | Agenda (Pista 02) | Filtros por categoria, lista de eventos gerada em JS e horário semanal de treinos |
 | `#contactos` | Contactos (Pista 03) | Telefone, WhatsApp e mapa do Parque do Valbom, em Alcochete |
-| `#inscricoes` | Inscrições (Pista 04) | Planos Escola de atletismo / Competição / Sócio Navegante, links e códigos QR para inscrição, formulário de sessão experimental e FAQ |
+| `#inscricoes` | Inscrições (Pista 04) | Planos Escola de atletismo / Competição / Sócio Navegante, links e códigos QR para inscrição e FAQ; formulário de sessão experimental desativado |
 
 As ligações de navegação usam `href="#id"` com o atributo `data-scroll` para fazerem *scroll* suave até à secção.
 
@@ -127,8 +127,8 @@ Todo o código está dentro de uma única função auto-executável (IIFE), divi
 | `generic toggles` | Abre e fecha qualquer painel ligado por `data-toggle="id"` |
 | `agenda` | Lista de eventos, filtros, detalhes expansíveis e "Reservar lugar" |
 | `billing` | Alterna os preços entre mensal e anual |
-| `plan choice` | Os botões `data-choose` selecionam o plano no formulário |
-| `form` | Valida o formulário e mostra a mensagem de sucesso |
+| `plan choice` | Os botões `data-choose` mostram o link e o código QR do formulário externo do plano |
+| `form` | Código comentado: formulário experimental e mensagem de sucesso desativados |
 | `social` | Os botões com `data-toast` mostram uma mensagem |
 
 ### Convenções de atributos `data-*`
@@ -186,6 +186,10 @@ No rodapé, troque cada `<button class="social" data-toast="…">` por uma liga�
 ---
 
 ## 6. Formulário de inscrição
+
+O formulário experimental `#joinForm`, o painel de sucesso e o CSS/JavaScript exclusivos estão comentados e não são apresentados nem executados. Os botões dos planos continuam a mostrar os formulários externos e os códigos QR. Para reativar a versão experimental, remova os comentários identificados com `joinForm desativado` nos três ficheiros.
+
+Comportamento da versão experimental quando reativada:
 
 - **Campos obrigatórios:** nome, email (validado por expressão regular), plano e consentimento.
 - **Quando é válido:** o formulário é ocultado e aparece o painel `#success`, com uma mensagem personalizada. O botão "Inscrever outro atleta" repõe o formulário.

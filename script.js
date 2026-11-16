@@ -297,7 +297,8 @@
   }
 
   /* ---------- plan choose ---------- */
-  const planSelect = $("#planSelect");
+  // joinForm desativado.
+  // const planSelect = $("#planSelect");
   const planForm = $("#planForm");
   const planFormTitle = $("#planFormTitle");
   const planFormLink = $("#planFormLink");
@@ -325,8 +326,8 @@
       const name = b.dataset.choose;
       const formDetails = planForms[name];
       if (!formDetails) return;
-      planSelect.value = name;
-      planSelect.closest("label").classList.remove("invalid");
+      // planSelect.value = name;
+      // planSelect.closest("label").classList.remove("invalid");
       highlightPlan(name);
       planFormTitle.textContent = `Inscrição — ${name}`;
       planFormLink.href = formDetails.url;
@@ -337,9 +338,10 @@
       toast(`Plano ${name} selecionado.`);
     }),
   );
-  planSelect.addEventListener("change", () => highlightPlan(planSelect.value));
+  // planSelect.addEventListener("change", () => highlightPlan(planSelect.value));
 
   /* ---------- form ---------- */
+  /* joinForm desativado.
   const form = $("#joinForm");
   const success = $("#success");
   const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
@@ -388,6 +390,7 @@
     form.hidden = false;
     form.elements.name.focus();
   });
+  */
 
   /* ---------- social ---------- */
   $$("[data-toast]").forEach((b) =>
