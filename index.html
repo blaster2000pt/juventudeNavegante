@@ -22,6 +22,7 @@
     <nav class="nav__links" id="navLinks" aria-label="Principal">
       <a href="#inicio" data-scroll>Início</a>
       <a href="#quem-somos" data-scroll>Quem somos</a>
+      <a href="#galeria" data-scroll>Galeria</a>
       <a href="#agenda" data-scroll>Agenda</a>
       <a href="#contactos" data-scroll>Contactos</a>
       <a href="#inscricoes" data-scroll class="btn btn--small btn--orange nav__cta">Planos</a>
@@ -231,6 +232,29 @@
       </div>
     </section>
 
+    <section class="section gallery" id="galeria" aria-labelledby="galleryTitle">
+      <header class="section__head reveal">
+        <p class="lane-tag">Galeria</p>
+        <h2 id="galleryTitle">Momentos que nos <em>unem.</em></h2>
+      </header>
+      <div class="gallery__carousel reveal" id="galleryCarousel" role="region" aria-roledescription="carrossel" aria-label="Fotografias do clube" tabindex="0">
+        <div class="gallery__viewport" id="galleryViewport">
+          <div class="gallery__empty" id="galleryEmpty">
+            <p>Fotografias em breve</p>
+            <span>Os nossos treinos, provas e momentos de equipa vão ganhar aqui o seu lugar.</span>
+          </div>
+        </div>
+        <div class="gallery__controls" id="galleryControls" hidden>
+          <button class="btn btn--line" id="galleryPrev" type="button" aria-label="Fotografia anterior" aria-controls="galleryViewport">←</button>
+          <div class="gallery__dots" id="galleryDots" role="group" aria-label="Escolher fotografia"></div>
+          <button class="btn btn--line" id="galleryNext" type="button" aria-label="Fotografia seguinte" aria-controls="galleryViewport">→</button>
+          <button class="btn btn--line" id="galleryPause" type="button">Pausar</button>
+        </div>
+        <p class="gallery__counter" id="galleryCounter" hidden></p>
+        <p class="gallery__status" id="galleryStatus" role="status"></p>
+      </div>
+    </section>
+
     <section class="section agenda" id="agenda">
       <header class="section__head reveal">
         <p class="lane-tag"><span>Pista 02</span> Agenda</p>
@@ -247,14 +271,16 @@
       <ul class="events" id="events" aria-live="polite"></ul>
 
       <div class="week reveal">
-        <h3>Horário semanal</h3>
-        <div class="week__table">
-          <div class="week__row week__row--head">
-            <span>Treino</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span>
+        <h3 id="weekScheduleTitle">Horário semanal</h3>
+        <div class="week__scroll" role="region" aria-labelledby="weekScheduleTitle" tabindex="0">
+          <div class="week__table">
+            <div class="week__row week__row--head">
+              <span>Treino</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span>
+            </div>
+            <div class="week__row"><span><b>Escola de Atletismo</b></span><span>—</span><span>18:30</span><span>—</span><span>18h30</span><span>—</span></div>
+            <div class="week__row"><span><b>Competição G1</b></span><span>19h00</span><span>—</span><span>19h00</span><span>20h00</span><span>—</span></div>
+            <div class="week__row"><span><b>Competição G2</b></span><span>20h00</span><span>—</span><span>20h00</span><span>19h00</span><span>—</span></div>
           </div>
-          <div class="week__row"><span><b>Escola de Atletismo</b></span><span>—</span><span>18:30</span><span>—</span><span>18h30</span><span>—</span></div>
-          <div class="week__row"><span><b>Competição G1</b></span><span>19h00</span><span>—</span><span>19h00</span><span>20h00</span><span>—</span></div>
-          <div class="week__row"><span><b>Competição G2</b></span><span>20h00</span><span>—</span><span>20h00</span><span>19h00</span><span>—</span></div>
         </div>
       </div>
     </section>
@@ -312,11 +338,11 @@
       <div class="plans reveal">
         <article class="plan" data-plan="Escola de atletismo">
           <div class="plan__age">6–10 anos</div>
-          <h3>Escola de atletismo</h3>
+          <h3>Escola de atletismo (2x)</h3>
           <div class="plan__price"><span class="amt" data-month="18" data-year="180">23</span><span class="cur">€</span><span class="per">/mês</span></div>
           <ul>
             <li>Treino 2x por semana</li>
-            <li>Material de treino básico</li>
+            <li>Material técnico de treino</li>
             <li>Acompanhamento técnico</li>
             <li>Competição</li>
           </ul>
@@ -349,6 +375,39 @@
           </ul>
           <button class="btn btn--line btn--block" type="button" data-choose="Sócio Navegante">Escolher plano</button>
         </article>
+
+        <div class="plans--extra" id="extraPlans" hidden>
+        <article class="plan" data-plan="Escola de atletismo">
+          <div class="plan__age">6–10 anos</div>
+          <h3>Escola de atletismo (1x)</h3>
+          <div class="plan__price"><span class="amt" data-month="15">15</span><span class="cur">€</span><span class="per">/mês</span></div>
+          <ul>
+            <li>Treino 1x por semana</li>
+            <li>Material técnico de treino</li>
+            <li>Acompanhamento técnico</li>
+            <li>Competição</li>
+          </ul>
+          <button class="btn btn--line btn--block" type="button" data-choose="Escola de atletismo — 1x por semana">Escolher plano</button>
+        </article>
+
+        <article class="plan" data-plan="Prescrição de treino online">
+          <div class="plan__age">Treino online</div>
+          <h3>Prescrição de treino online</h3>
+          <div class="plan__price"><span class="amt" data-month="20">20</span><span class="cur">€</span><span class="per">/mês</span></div>
+          <ul>
+            <li>Prescrição de treino online</li>
+            <li>Contacta-nos pelo WhatsApp para saber mais</li>
+          </ul>
+          <a class="btn btn--line btn--block" href="https://wa.me/351928377370?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20a%20prescri%C3%A7%C3%A3o%20de%20treino%20online." target="_blank" rel="noopener noreferrer">Falar pelo WhatsApp</a>
+        </article>
+        </div>
+      </div>
+
+      <div class="plans-toggle">
+        <button class="btn btn--line plans-toggle__button" id="morePlansToggle" type="button" aria-expanded="false" aria-controls="extraPlans">
+          <span class="plans-toggle__icon" aria-hidden="true">+</span>
+          <span id="morePlansLabel">Ver mais planos</span>
+        </button>
       </div>
 
       <div class="signup plan-form" id="planForm" aria-live="polite" hidden>
@@ -513,6 +572,7 @@
   <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo">↑</button>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+  <script src="gallery-data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

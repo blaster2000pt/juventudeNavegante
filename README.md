@@ -147,6 +147,21 @@ Todo o código está dentro de uma única função auto-executável (IIFE), divi
 
 ## 5. Como editar conteúdos
 
+### Adicionar fotografias à galeria
+Guarde os JPG na pasta `images/galeria` e execute, a partir da raiz do projeto (requer Node.js):
+
+```powershell
+node scripts\update-gallery.cjs
+```
+
+O comando gera `gallery-data.js` com todos os ficheiros `.jpg` e `.jpeg` da pasta, incluindo extensões em maiúsculas, sem pesquisar subpastas. Não edite esse ficheiro nem o array manualmente. Repita o comando sempre que adicionar, remover ou mudar o nome de fotografias e publique também o `gallery-data.js` atualizado, juntamente com as imagens. A publicação atual por GitHub Pages não muda; a página continua a funcionar ao abrir `index.html` diretamente.
+
+A ordem segue o nome dos ficheiros com ordenação numérica: use, por exemplo, `01-treino.jpg`, `02-equipa.jpg`. O texto alternativo é gerado a partir do nome, substituindo hífenes e underscores por espaços; use nomes descritivos.
+
+Enquanto a pasta não tiver fotografias e a lista gerada estiver vazia, aparece «Fotografias em breve». Com uma fotografia, os controlos ficam ocultos; com duas ou mais, o carrossel avança a cada 3 segundos e regressa ao início. As imagens preenchem uma área 16:9 (4:3 em telemóvel), sem deformação, podendo ser recortadas nas margens.
+
+A galeria tem setas, indicadores, pausa, navegação por teclado e gesto de deslizar. A reprodução automática para com o rato ou foco na galeria, fora do ecrã, no separador inativo ou com preferência por movimento reduzido. Falhas ao carregar fotografias são anunciadas e suspendem a reprodução. Otimize os JPG antes de os adicionar.
+
 ### Adicionar um evento à agenda
 Os eventos ficam no *array* `events`, em `script.js`:
 
@@ -164,6 +179,8 @@ Os eventos ficam no *array* `events`, em `script.js`:
 
 As categorias aparecem em português através do objeto `label` (`Treino`, `Competição`, `Comunidade`).
 
+O horário semanal mantém uma largura mínima de 680 px e apresenta scroll horizontal dentro de uma região focável em ecrãs estreitos, sem comprimir as colunas.
+
 ### Alterar preços dos planos
 No `index.html`, dentro de cada cartão `.plan`, edite o texto e os atributos do preço:
 
@@ -171,7 +188,13 @@ No `index.html`, dentro de cada cartão `.plan`, edite o texto e os atributos do
 <span class="amt" data-month="22" data-year="220">22</span><span class="cur">€</span>
 ```
 
-Se mudar o nome de um plano, atualize também o `data-choose` do botão e a `<option>` correspondente em `#planSelect`.
+Se mudar o nome de um plano com inscrição por formulário, atualize o `data-plan` do cartão, o `data-choose` do botão e a entrada correspondente em `planForms`, no `script.js`.
+
+Os três planos principais ficam sempre visíveis. O botão «+ Ver mais planos» revela dois cartões adicionais e permite voltar a ocultá-los:
+- **Prescrição de treino online:** 20 €/mês, com contacto pelo WhatsApp do clube.
+- **Escola de atletismo — 1x por semana:** 15 €/mês, com o mesmo formulário e código QR da Escola de atletismo.
+
+O botão usa `aria-expanded` e `aria-controls="extraPlans"`; os cartões adicionais começam com `hidden`. Todos os cartões partilham a mesma grelha, largura e altura; o botão fica abaixo da grelha. O `#planSelect` pertence ao formulário experimental comentado.
 
 ### Adicionar uma pergunta frequente
 Copie um bloco existente e use um novo ID (por exemplo `faq4`) tanto no `data-toggle` do botão como no `id` do `.collapse`.
@@ -199,6 +222,7 @@ Comportamento da versão experimental quando reativada:
 
 ## 7. Acessibilidade
 
+- Em mobile, o cabeçalho tem fundo creme sólido antes e depois de scroll. O menu aberto mantém o fundo escuro em todo o ecrã, com links claros e texto escuro no botão «Planos» para garantir contraste.
 - `lang="pt-PT"` no documento.
 - Atributos `aria-expanded`, `aria-controls`, `aria-label` e `role` nos botões interativos.
 - Foco visível (`:focus-visible`) com contorno laranja.

@@ -56,7 +56,7 @@
   onScroll();
   toTop.addEventListener("click", () => scrollToId("inicio"));
 
-  const sections = ["inicio", "quem-somos", "agenda", "contactos", "inscricoes"].map((id) =>
+  const sections = ["inicio", "quem-somos", "galeria", "agenda", "contactos", "inscricoes"].map((id) =>
     document.getElementById(id),
   );
   const spy = new IntersectionObserver(
@@ -277,6 +277,122 @@
     }),
   );
 
+  /* ---------- gallery ---------- */
+  const galleryImages = window.JUNA_GALLERY_IMAGES;
+  const gallery = $("#galleryCarousel");
+  if (!Array.isArray(galleryImages) || !galleryImages.every((image) =>
+    image && typeof image.src === "string" && typeof image.alt === "string" &&
+    image.src.trim() && image.alt.trim())) {
+    console.error("A lista de fotografias da galeria está em falta ou é inválida. Execute node scripts\\update-gallery.cjs.");
+    $("#galleryEmpty").hidden = true;
+    $("#galleryStatus").textContent = "Não foi possível carregar a lista de fotografias da galeria.";
+  } else if (galleryImages.length) {
+    const viewport = $("#galleryViewport");
+    const dots = $("#galleryDots");
+    const status = $("#galleryStatus");
+    const counter = $("#galleryCounter");
+    const pause = $("#galleryPause");
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    let current = 0;
+    let paused = motion.matches;
+    let visible = false;
+    let hovering = false;
+    let timer;
+    const slides = [];
+    const indicators = [];
+
+    const updateTimer = () => {
+      clearInterval(timer);
+      pause.textContent = paused ? "Reproduzir" : "Pausar";
+      if (galleryImages.length > 1 && !paused && !motion.matches && visible &&
+          !hovering && !gallery.contains(document.activeElement) && !document.hidden) {
+        timer = setInterval(() => showSlide(current + 1), 3000);
+      }
+    };
+    const showSlide = (index, announce = false) => {
+      current = (index + slides.length) % slides.length;
+      slides.forEach((slide, i) => {
+        slide.hidden = i !== current;
+        indicators[i].setAttribute("aria-current", String(i === current));
+      });
+      counter.textContent = `${current + 1} / ${slides.length}`;
+      if (announce) status.textContent = `Fotografia ${current + 1} de ${slides.length}: ${galleryImages[current].alt}`;
+      updateTimer();
+    };
+
+    galleryImages.forEach(({ src, alt }, i) => {
+      const slide = document.createElement("figure");
+      slide.className = "gallery__slide";
+      slide.hidden = i !== 0;
+      slide.setAttribute("role", "group");
+      slide.setAttribute("aria-label", `${i + 1} de ${galleryImages.length}`);
+      const image = document.createElement("img");
+      image.alt = alt;
+      image.loading = i === 0 ? "eager" : "lazy";
+      image.decoding = "async";
+      image.addEventListener("error", () => {
+        console.error("Não foi possível carregar a fotografia da galeria:", src);
+        paused = true;
+        status.textContent = `Não foi possível carregar a fotografia: ${alt}.`;
+        updateTimer();
+      });
+      image.src = src;
+      slide.append(image);
+      viewport.append(slide);
+      slides.push(slide);
+      const indicator = document.createElement("button");
+      indicator.type = "button";
+      indicator.setAttribute("aria-label", `Ver fotografia ${i + 1}`);
+      indicator.setAttribute("aria-controls", "galleryViewport");
+      indicator.addEventListener("click", () => showSlide(i, true));
+      dots.append(indicator);
+      indicators.push(indicator);
+    });
+    $("#galleryEmpty").hidden = true;
+    $("#galleryControls").hidden = galleryImages.length < 2;
+    counter.hidden = false;
+    showSlide(0);
+
+    $("#galleryPrev").addEventListener("click", () => showSlide(current - 1, true));
+    $("#galleryNext").addEventListener("click", () => showSlide(current + 1, true));
+    pause.addEventListener("click", () => {
+      paused = !paused;
+      updateTimer();
+    });
+    gallery.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      e.preventDefault();
+      showSlide(current + (e.key === "ArrowRight" ? 1 : -1), true);
+    });
+    gallery.addEventListener("mouseenter", () => { hovering = true; updateTimer(); });
+    gallery.addEventListener("mouseleave", () => { hovering = false; updateTimer(); });
+    gallery.addEventListener("focusin", updateTimer);
+    gallery.addEventListener("focusout", () => queueMicrotask(updateTimer));
+    document.addEventListener("visibilitychange", updateTimer);
+    motion.addEventListener("change", () => {
+      if (motion.matches) paused = true;
+      updateTimer();
+    });
+    let touchStart;
+    viewport.addEventListener("touchstart", (e) => {
+      const touch = e.changedTouches[0];
+      touchStart = { x: touch.clientX, y: touch.clientY };
+    }, { passive: true });
+    viewport.addEventListener("touchend", (e) => {
+      if (!touchStart) return;
+      const dx = e.changedTouches[0].clientX - touchStart.x;
+      const dy = e.changedTouches[0].clientY - touchStart.y;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showSlide(current + (dx < 0 ? 1 : -1), true);
+      touchStart = null;
+    }, { passive: true });
+    viewport.addEventListener("touchcancel", () => { touchStart = null; });
+    const galleryObserver = new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      updateTimer();
+    }, { threshold: 0.25 });
+    galleryObserver.observe(gallery);
+  }
+
   /* ---------- billing switch ---------- */
   const billing = $("#billingSwitch");
   if (billing) {
@@ -296,6 +412,17 @@
     });
   }
 
+  /* ---------- more plans ---------- */
+  const morePlansToggle = $("#morePlansToggle");
+  const extraPlans = $("#extraPlans");
+  morePlansToggle.addEventListener("click", () => {
+    const expanded = morePlansToggle.getAttribute("aria-expanded") !== "true";
+    morePlansToggle.setAttribute("aria-expanded", String(expanded));
+    extraPlans.hidden = !expanded;
+    $(".plans-toggle__icon", morePlansToggle).textContent = expanded ? "−" : "+";
+    $("#morePlansLabel").textContent = expanded ? "Ver menos planos" : "Ver mais planos";
+  });
+
   /* ---------- plan choose ---------- */
   // joinForm desativado.
   // const planSelect = $("#planSelect");
@@ -305,6 +432,10 @@
   const planFormQr = $("#planFormQr");
   const planForms = {
     "Escola de atletismo": {
+      url: "https://forms.gle/vGCrbrNZmsZP7H5y6",
+      qr: "images/qr-plano-escola-atletismo.png",
+    },
+    "Escola de atletismo — 1x por semana": {
       url: "https://forms.gle/vGCrbrNZmsZP7H5y6",
       qr: "images/qr-plano-escola-atletismo.png",
     },
