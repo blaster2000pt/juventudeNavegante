@@ -4,7 +4,7 @@ const path = require("node:path");
 const root = path.resolve(__dirname, "..");
 const directory = path.join(root, "images", "galeria");
 const files = fs.readdirSync(directory, { withFileTypes: true })
-  .filter((entry) => entry.isFile() && /\.jpe?g$/i.test(entry.name))
+  .filter((entry) => entry.isFile() && /\.(jpe?g|png)$/i.test(entry.name))
   .map((entry) => entry.name)
   .sort((a, b) => a.localeCompare(b, "pt", { numeric: true }));
 const images = files.map((name) => ({

@@ -61,9 +61,10 @@ flowchart TD
 |---|---|---|
 | `#inicio` | Página inicial (*hero*) | Título, chamadas à ação, estatísticas com contador, pista de atletismo animada em SVG com cronómetro ao vivo |
 | `#quem-somos` | Quem somos (Pista 01) | História do clube (expansível), valores e equipa técnica com biografias expansíveis |
-| `#agenda` | Agenda (Pista 02) | Filtros por categoria, lista de eventos gerada em JS e horário semanal de treinos |
-| `#contactos` | Contactos (Pista 03) | Telefone, WhatsApp e mapa do Parque do Valbom, em Alcochete |
-| `#inscricoes` | Inscrições (Pista 04) | Planos Escola de atletismo / Competição / Sócio Navegante, links e códigos QR para inscrição e FAQ; formulário de sessão experimental desativado |
+| `#galeria` | Galeria (Pista 02) | Carrossel de fotografias com reprodução automática e controlos |
+| `#agenda` | Agenda (Pista 03) | Filtros por categoria, lista de eventos gerada em JS e horário semanal de treinos |
+| `#contactos` | Contactos (Pista 04) | Telefone, WhatsApp e mapa do Parque do Valbom, em Alcochete |
+| `#inscricoes` | Inscrições (Pista 05) | Planos Escola de atletismo / Competição / Sócio Navegante, links e códigos QR para inscrição e FAQ; formulário de sessão experimental desativado |
 
 As ligações de navegação usam `href="#id"` com o atributo `data-scroll` para fazerem *scroll* suave até à secção.
 
@@ -125,7 +126,7 @@ Todo o código está dentro de uma única função auto-executável (IIFE), divi
 | `reveal & counters` | Animações de entrada e contadores |
 | `hero stopwatch` | Cronómetro ao vivo no formato `mm:ss,cc` |
 | `generic toggles` | Abre e fecha qualquer painel ligado por `data-toggle="id"` |
-| `agenda` | Lista de eventos, filtros, detalhes expansíveis e "Reservar lugar" |
+| `agenda` | Lista de eventos, filtros, detalhes expansíveis e ligação à localização no Google Maps |
 | `billing` | Alterna os preços entre mensal e anual |
 | `plan choice` | Os botões `data-choose` mostram o link e o código QR do formulário externo do plano |
 | `form` | Código comentado: formulário experimental e mensagem de sucesso desativados |
@@ -148,21 +149,23 @@ Todo o código está dentro de uma única função auto-executável (IIFE), divi
 ## 5. Como editar conteúdos
 
 ### Adicionar fotografias à galeria
-Guarde os JPG na pasta `images/galeria` e execute, a partir da raiz do projeto (requer Node.js):
+Guarde as imagens JPG, JPEG ou PNG na pasta `images/galeria` e execute, a partir da raiz do projeto (requer Node.js):
 
 ```powershell
 node scripts\update-gallery.cjs
 ```
 
-O comando gera `gallery-data.js` com todos os ficheiros `.jpg` e `.jpeg` da pasta, incluindo extensões em maiúsculas, sem pesquisar subpastas. Não edite esse ficheiro nem o array manualmente. Repita o comando sempre que adicionar, remover ou mudar o nome de fotografias e publique também o `gallery-data.js` atualizado, juntamente com as imagens. A publicação atual por GitHub Pages não muda; a página continua a funcionar ao abrir `index.html` diretamente.
+O comando gera `gallery-data.js` com todos os ficheiros `.jpg`, `.jpeg` e `.png` da pasta, incluindo extensões em maiúsculas, sem pesquisar subpastas. Não edite esse ficheiro nem o array manualmente. Repita o comando sempre que adicionar, remover ou mudar o nome de fotografias e publique também o `gallery-data.js` atualizado, juntamente com as imagens. A publicação atual por GitHub Pages não muda; a página continua a funcionar ao abrir `index.html` diretamente.
 
 A ordem segue o nome dos ficheiros com ordenação numérica: use, por exemplo, `01-treino.jpg`, `02-equipa.jpg`. O texto alternativo é gerado a partir do nome, substituindo hífenes e underscores por espaços; use nomes descritivos.
 
 Enquanto a pasta não tiver fotografias e a lista gerada estiver vazia, aparece «Fotografias em breve». Com uma fotografia, os controlos ficam ocultos; com duas ou mais, o carrossel avança a cada 3 segundos e regressa ao início. As imagens preenchem uma área 16:9 (4:3 em telemóvel), sem deformação, podendo ser recortadas nas margens.
 
-A galeria tem setas, indicadores, pausa, navegação por teclado e gesto de deslizar. A reprodução automática para com o rato ou foco na galeria, fora do ecrã, no separador inativo ou com preferência por movimento reduzido. Falhas ao carregar fotografias são anunciadas e suspendem a reprodução. Otimize os JPG antes de os adicionar.
+A galeria tem setas, indicadores, pausa, navegação por teclado e gesto de deslizar. A reprodução automática começa por defeito e avança a cada 3 segundos. Com o rato ou foco na galeria, fora do ecrã ou no separador inativo, o avanço fica temporariamente suspenso e retoma automaticamente quando essas condições deixam de se aplicar. O botão «Pausar» mantém o avanço suspenso até selecionar «Reproduzir». A preferência por movimento reduzido desativa as animações, mas não a troca automática de fotografias. Falhas ao carregar fotografias são anunciadas e suspendem a reprodução. Otimize as imagens antes de as adicionar.
 
 ### Adicionar um evento à agenda
+Cada evento apresenta um botão «Ver no Google Maps» com o estilo de contorno. A pesquisa usa o campo `place`: indique uma morada completa ou um local inequívoco para obter resultados precisos. Não existem reservas locais nem botão de adesão a sócio na agenda.
+
 Os eventos ficam no *array* `events`, em `script.js`:
 
 ```js
@@ -182,6 +185,8 @@ As categorias aparecem em português através do objeto `label` (`Treino`, `Comp
 O horário semanal mantém uma largura mínima de 680 px e apresenta scroll horizontal dentro de uma região focável em ecrãs estreitos, sem comprimir as colunas.
 
 ### Alterar preços dos planos
+Todos os planos têm o mesmo aspeto inicial, sem indicação de «Mais popular» nem destaque persistente após seleção. Ao passar o rato, o cartão apresenta fundo creme, texto azul-escuro e botão amarelo.
+
 No `index.html`, dentro de cada cartão `.plan`, edite o texto e os atributos do preço:
 
 ```html

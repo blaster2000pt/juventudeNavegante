@@ -198,7 +198,6 @@
     },
   ];
   
-  const reserved = new Set();
   const list = $("#events");
   const label = {
     training: "Treino",
@@ -215,7 +214,6 @@
         const li = document.createElement("li");
         li.className = "event";
         li.style.animationDelay = `${n * 60}ms`;
-        const done = reserved.has(ev.i);
         li.innerHTML = `
           <button class="event__head" aria-expanded="false" aria-controls="ev-${ev.i}">
             <span class="event__date"><b>${ev.d}</b><small>${ev.m} · ${ev.wd}</small></span>
@@ -232,8 +230,7 @@
                 <ul><li>⏱ ${ev.time}</li><li>📍 ${ev.place}</li><li>🏃 ${ev.dist}</li></ul>
               </div>
               <div class="event__actions">
-                <button class="btn btn--small ${done ? "btn--orange reserve is-done" : "btn--orange reserve"}" data-i="${ev.i}">${done ? "Lugar reservado ✓" : "Reservar lugar"}</button>
-                                <a href="#inscricoes" data-scroll class="btn btn--small btn--line">Tornar-me sócio</a>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(ev.place)}" target="_blank" rel="noopener noreferrer" class="btn btn--small btn--line">Ver no Google Maps</a>
               </div>
             </div></div>
           </div>`;
@@ -247,23 +244,6 @@
     if (head) {
       setToggle(head, head.getAttribute("aria-expanded") !== "true");
       return;
-    }
-    const r = e.target.closest(".reserve");
-    if (r) {
-      const i = +r.dataset.i;
-      if (reserved.has(i)) {
-        reserved.delete(i);
-        r.classList.remove("is-done");
-        r.textContent = "Reservar lugar";
-        toast(`Reserva cancelada: ${events[i].title}.`);
-      } else {
-        reserved.add(i);
-        r.classList.add("is-done");
-        r.textContent = "Lugar reservado ✓";
-        toast(
-          `Até dia ${events[i].d} de ${events[i].m} — ${events[i].title}! 🧡💙`,
-        );
-      }
     }
   });
 
@@ -292,9 +272,8 @@
     const status = $("#galleryStatus");
     const counter = $("#galleryCounter");
     const pause = $("#galleryPause");
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let current = 0;
-    let paused = motion.matches;
+    let paused = false;
     let visible = false;
     let hovering = false;
     let timer;
@@ -304,8 +283,8 @@
     const updateTimer = () => {
       clearInterval(timer);
       pause.textContent = paused ? "Reproduzir" : "Pausar";
-      if (galleryImages.length > 1 && !paused && !motion.matches && visible &&
-          !hovering && !gallery.contains(document.activeElement) && !document.hidden) {
+      if (galleryImages.length > 1 && !paused && visible && !hovering &&
+          !gallery.contains(document.activeElement) && !document.hidden) {
         timer = setInterval(() => showSlide(current + 1), 3000);
       }
     };
@@ -369,10 +348,6 @@
     gallery.addEventListener("focusin", updateTimer);
     gallery.addEventListener("focusout", () => queueMicrotask(updateTimer));
     document.addEventListener("visibilitychange", updateTimer);
-    motion.addEventListener("change", () => {
-      if (motion.matches) paused = true;
-      updateTimer();
-    });
     let touchStart;
     viewport.addEventListener("touchstart", (e) => {
       const touch = e.changedTouches[0];
@@ -448,10 +423,6 @@
       qr: "images/qr-plano-socio-navegante.png",
     },
   };
-  const highlightPlan = (name) =>
-    $$(".plan").forEach((p) =>
-      p.classList.toggle("is-chosen", p.dataset.plan === name),
-    );
   $$("[data-choose]").forEach((b) =>
     b.addEventListener("click", () => {
       const name = b.dataset.choose;
@@ -459,7 +430,6 @@
       if (!formDetails) return;
       // planSelect.value = name;
       // planSelect.closest("label").classList.remove("invalid");
-      highlightPlan(name);
       planFormTitle.textContent = `Inscrição — ${name}`;
       planFormLink.href = formDetails.url;
       planFormQr.src = formDetails.qr;
@@ -469,7 +439,6 @@
       toast(`Plano ${name} selecionado.`);
     }),
   );
-  // planSelect.addEventListener("change", () => highlightPlan(planSelect.value));
 
   /* ---------- form ---------- */
   /* joinForm desativado.
@@ -516,7 +485,6 @@
 
   $("#resetForm").addEventListener("click", () => {
     form.reset();
-    highlightPlan("");
     success.hidden = true;
     form.hidden = false;
     form.elements.name.focus();
