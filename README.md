@@ -187,7 +187,7 @@ Categorias suportadas:
 - `competition` — Competição;
 - `community` — Comunidade.
 
-O botão «Ver no Google Maps» cria uma pesquisa a partir do campo `place`. Use uma morada completa ou um local inequívoco.
+O botão «Ver localização» cria uma pesquisa no Google Maps a partir do campo `place`. Use uma morada completa ou um local inequívoco.
 
 ## Planos
 

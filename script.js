@@ -250,7 +250,7 @@
                 <ul><li>⏱ ${ev.time}</li><li>📍 ${ev.place}</li><li>🏃 ${ev.dist}</li></ul>
               </div>
               <div class="event__actions">
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(ev.place)}" target="_blank" rel="noopener noreferrer" class="btn btn--small btn--line">Ver no Google Maps</a>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(ev.place)}" target="_blank" rel="noopener noreferrer" class="btn btn--small btn--line">📍 Ver localização</a>
               </div>
             </div></div>
           </div>`;
