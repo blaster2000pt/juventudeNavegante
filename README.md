@@ -1,235 +1,271 @@
 # Juventude Navegante
 
-Site de página única (*one-page*) para uma escola de atletismo. Está escrito em português de Portugal e usa apenas HTML, CSS e JavaScript, sem frameworks nem passo de *build*.
+Site estático de página única da Juventude Navegante — Associação, uma escola de atletismo sediada em Alcochete.
 
-> Para ver o site, basta abrir `index.html` no browser. Para o publicar, use o GitHub Pages: **Settings → Pages → Deploy from a branch → `main` / `(root)`**.
+O projeto usa apenas HTML, CSS e JavaScript, sem frameworks, dependências de execução ou etapa de compilação. Está escrito em português de Portugal e pode ser publicado diretamente no GitHub Pages.
 
 ## Atualizações recentes
 
-- Ajustada a área interior da pista para verde de relva, mantendo o perímetro em cor laranja.
-- Atualizada a representação visual da pista para mostrar 8 faixas/lane markers na página inicial.
-- Substituído o logótipo do cabeçalho pelo ficheiro `images/juna logo.jpg`.
-- Documentação alinhada com a identidade do clube: nome atualizado para Juventude Navegante, local em Alcochete e ano de origem 2024.
+- O identificador visual usa o logótipo `images/juna_CORES_1-100.jpg` no cabeçalho e como ícone do site.
+- A pista SVG apresenta quatro pistas, cor de tartan castanha, área interior de relva e corredores animados.
+- A paleta combina castanho/bordô, verde, amarelo, laranja, azul-marinho e tons creme.
+- Foram adicionados novos planos de treino e uma galeria de fotografias gerida por dados.
+- Os eventos da agenda podem ser filtrados por categoria e têm ligação direta ao Google Maps.
+- Os contactos incluem telefone, WhatsApp e mapa do Parque do Valbom.
+- Foram publicados links reais do Instagram e Facebook no rodapé.
+- O formulário experimental de inscrição está desativado; os planos usam formulários externos e códigos QR.
 
----
+## Estrutura do projeto
 
-## 1. Estrutura de ficheiros
-
+```text
+juventudeNavegante/
+├── index.html              Estrutura, conteúdos e secções da página
+├── styles.css              Paleta, componentes, layout e responsividade
+├── script.js               Dados da agenda, galeria e interações
+├── gallery-data.js         Lista gerada das fotografias da galeria
+├── README.md               Documentação do projeto
+├── scripts/
+│   └── update-gallery.cjs  Gerador da lista de fotografias
+└── images/
+    ├── juna_CORES_1-100.jpg
+    ├── qr-plano-*.png
+    ├── logo-fabisan-ouro2.png
+    ├── vertical_cor.png
+    ├── Alexandra Barrela.jpg
+    ├── freguesia Alcochete.jpg
+    └── galeria/
+        └── .gitkeep
 ```
-Juventude Navegante/
-├── index.html   → estrutura e conteúdos (todo o texto do site)
-├── styles.css   → design: cores, tipografia, layout, animações, responsivo
-├── script.js    → interatividade: menu, agenda, inscrições, formulário
-├── images/
-│   └── juna logo.jpg → logótipo oficial do clube usado no cabeçalho principal
-└── README.md    → este documento
-```
 
-Cada ficheiro tem uma responsabilidade:
+O ficheiro `gallery-data.js` é gerado automaticamente. Não deve ser editado manualmente.
 
-| Camada | Ficheiro | Responsabilidade |
+## Publicar
+
+Não é necessário executar um processo de build.
+
+### Abrir localmente
+
+Abra `index.html` diretamente no navegador.
+
+### GitHub Pages
+
+1. Em GitHub, abra **Settings → Pages**.
+2. Em **Build and deployment**, selecione **Deploy from a branch**.
+3. Escolha o ramo `main` e a pasta `(root)`.
+
+Depois da publicação, os ficheiros são servidos diretamente a partir da raiz do repositório.
+
+## Secções da página
+
+| Secção | Pista | Conteúdo |
 |---|---|---|
-| Conteúdo | `index.html` | Secções, textos, planos, FAQ, rodapé |
-| Apresentação | `styles.css` | Paleta, tipos de letra, componentes, *breakpoints* |
-| Comportamento | `script.js` | Eventos, dados da agenda, validação |
-| Branding | `images/juna logo.jpg` | Logótipo do clube exibido na navegação |
+| `#inicio` | — | Hero, chamadas à ação, estatísticas, cronómetro e pista SVG |
+| `#quem-somos` | Pista 01 | História, valores e equipa técnica |
+| `#galeria` | Pista 02 | Carrossel de fotografias |
+| `#agenda` | Pista 03 | Filtros, eventos e horário semanal |
+| `#contactos` | Pista 04 | Telefone, WhatsApp, morada e mapa |
+| `#inscricoes` | Pista 05 | Planos, formulários externos, códigos QR e perguntas frequentes |
 
----
+Os elementos de navegação usam `href="#id"` e o atributo `data-scroll` para fazer scroll suave.
 
-## 2. Esquema geral da página
+## Sistema de design
 
-```mermaid
-flowchart TD
-    A[Barra de progresso<br/>#progressBar] --> B[Navegação<br/>header.nav #top]
-    B --> C[Início<br/>#inicio — hero + pista SVG]
-    C --> D[Faixa de disciplinas<br/>.ribbon]
-    D --> E[Quem somos<br/>#quem-somos]
-    E --> F[Agenda<br/>#agenda]
-    F --> F1[Contactos e mapa<br/>#contactos]
-    F1 --> G[Inscrições<br/>#inscricoes]
-    G --> G1[Planos + switch mensal/anual]
-    G --> G2[Formulário<br/>#formulario]
-    G --> G3[Perguntas frequentes<br/>#faq1..3]
-    G --> H[Parceiros<br/>.partners]
-    H --> I[Rodapé — Segue-nos<br/>footer.footer]
-    I --> J[Botão topo #toTop + Toast #toast]
-```
-
-### Secções
-
-| ID | Secção | Conteúdo |
-|---|---|---|
-| `#inicio` | Página inicial (*hero*) | Título, chamadas à ação, estatísticas com contador, pista de atletismo animada em SVG com cronómetro ao vivo |
-| `#quem-somos` | Quem somos (Pista 01) | História do clube (expansível), valores e equipa técnica com biografias expansíveis |
-| `#galeria` | Galeria (Pista 02) | Carrossel de fotografias com reprodução automática e controlos |
-| `#agenda` | Agenda (Pista 03) | Filtros por categoria, lista de eventos gerada em JS e horário semanal de treinos |
-| `#contactos` | Contactos (Pista 04) | Telefone, WhatsApp e mapa do Parque do Valbom, em Alcochete |
-| `#inscricoes` | Inscrições (Pista 05) | Planos Escola de atletismo / Competição / Sócio Navegante, links e códigos QR para inscrição e FAQ; formulário de sessão experimental desativado |
-
-As ligações de navegação usam `href="#id"` com o atributo `data-scroll` para fazerem *scroll* suave até à secção.
-
----
-
-## 3. Sistema de design (`styles.css`)
-
-### Paleta de cores
-Está definida em variáveis CSS no `:root`. Para mudar uma cor em todo o site, basta alterar a variável correspondente.
+### Paleta
 
 | Variável | Cor | Uso |
 |---|---|---|
-| `--orange` | `#FF6B1A` | Cor principal, botões e destaques |
-| `--orange-deep` | `#E4501A` | *Hover* e sombras laranja |
+| `--orange` | `#FF6B1A` | Botões e destaques |
+| `--orange-deep` | `#E4501A` | Estados de hover e sombras |
 | `--peach` | `#FFB27A` | Acentos suaves |
-| `--blue` | `#1F4FD1` | Cor secundária, ligações e corredores da pista |
-| `--navy` | `#0B1F44` | Fundos escuros (faixa, rodapé) |
+| `--blue` | `#1F4FD1` | Elementos secundários |
+| `--navy` | `#0B1F44` | Fundos escuros e texto |
 | `--ink` | `#091634` | Texto principal |
 | `--cream` | `#FFF6EC` | Fundo da página |
-| `--sand` | `#F6E7D4` | Fundos de cartões e secções alternadas |
+| `--sand` | `#F6E7D4` | Cartões e fundos alternados |
 | `--muted` | `#5B6683` | Texto secundário |
+| `--bordeaux` | `#7D1F31` | Tartan principal da pista |
+| `--bordeaux-deep` | `#5B1221` | Tartan mais escuro |
+| `--grass` | `#5DBD67` | Relva da pista |
+| `--grass-deep` | `#3F8F4E` | Faixas alternadas da relva |
+| `--yellow` | `#F3C85A` | Destaques amarelos |
+| `--yellow-deep` | `#D4A73A` | Destaques sobre fundos claros |
 
-### Tipografia (Google Fonts)
-| Variável | Fonte | Uso |
-|---|---|---|
-| `--display` | Bricolage Grotesque | Títulos |
-| `--body` | Manrope | Texto corrido |
-| `--mono` | Space Mono | Números, cronómetro, etiquetas "Pista 0X" |
+### Tipografia
 
-### Organização do CSS
-O ficheiro está dividido por comentários, por esta ordem:
-`variáveis` → `progress lane` → `buttons` → `nav` → `hero` → `ribbon` → `sections` (`about`, `agenda`, `join`) → `partners` → `footer` → `reveal` → `responsive`.
-
-### Responsivo
-| *Breakpoint* | Alteração |
+| Variável | Fonte |
 |---|---|
-| `≤ 1024px` | Ajustes de grelhas e tamanhos |
-| `≤ 860px` | Menu móvel (botão hambúrguer) e colunas empilhadas |
-| `≤ 520px` | Ajustes para telemóveis pequenos |
-| `prefers-reduced-motion` | Desliga animações para quem as tem desativadas no sistema |
+| `--display` | Bricolage Grotesque |
+| `--body` | Manrope |
+| `--mono` | Space Mono |
 
-### Animações
-- **Pista SVG:** 5 corredores animados com `animateMotion` (SMIL), inclinação 3D em CSS e flutuação suave.
-- **Reveal:** os elementos com a classe `.reveal` aparecem ao entrar no ecrã (classe `.in`).
-- **Contadores:** os números com `data-count` sobem de 0 até ao valor indicado.
-- **Faixa (*ribbon*):** texto das disciplinas em movimento contínuo.
-- **Acordeões:** abrem e fecham com transição em `grid-template-rows`.
+As fontes são carregadas do Google Fonts. Os navegadores usam fontes de sistema como alternativa.
 
----
+### Responsividade e animações
 
-## 4. Interatividade (`script.js`)
+- O menu muda para um menu móvel em larguras até `860px`.
+- Os cartões e grelhas são empilhados em ecrãs estreitos.
+- A pista usa SVG, animação `animateMotion` e perspectiva CSS.
+- Elementos com `.reveal` entram em animação quando ficam visíveis.
+- Os elementos com `data-count` apresentam contadores animados.
+- Os acordeões usam transições de `grid-template-rows`.
+- `prefers-reduced-motion` reduz ou desliga as animações.
 
-Todo o código está dentro de uma única função auto-executável (IIFE), dividida em blocos:
+## Interatividade
 
-| Bloco | O que faz |
+O `script.js` usa uma IIFE e está organizado pelas seguintes áreas:
+
+| Área | Comportamento |
 |---|---|
-| `toast` | Mostra mensagens curtas no canto do ecrã (`toast("texto")`) |
-| `nav & smooth scroll` | Menu móvel, *scroll* suave (`a[data-scroll]`), barra de progresso, botão "voltar ao topo" e destaque da secção ativa no menu |
-| `reveal & counters` | Animações de entrada e contadores |
-| `hero stopwatch` | Cronómetro ao vivo no formato `mm:ss,cc` |
-| `generic toggles` | Abre e fecha qualquer painel ligado por `data-toggle="id"` |
-| `agenda` | Lista de eventos, filtros, detalhes expansíveis e ligação à localização no Google Maps |
-| `billing` | Alterna os preços entre mensal e anual |
-| `plan choice` | Os botões `data-choose` mostram o link e o código QR do formulário externo do plano |
-| `form` | Código comentado: formulário experimental e mensagem de sucesso desativados |
-| `social` | Os botões com `data-toast` mostram uma mensagem |
+| Navegação | Menu móvel, scroll suave, barra de progresso e botão “voltar ao topo” |
+| Secções | Reveal dos elementos e contadores |
+| Hero | Cronómetro ao vivo |
+| Agenda | Dados, filtros, expansão dos eventos e links para o Google Maps |
+| Galeria | Carrossel, indicadores, teclado, gesto de deslizar e reprodução automática |
+| Planos | Alternância mensal/anual, cartões adicionais e seleção de formulários |
+| Acordeões | Painéis ligados por `data-toggle` |
+| Feedback | Mensagens temporárias com `data-toast` |
 
-### Convenções de atributos `data-*`
+### Atributos `data-*`
 
 | Atributo | Exemplo | Efeito |
 |---|---|---|
-| `data-scroll` | `<a href="#agenda" data-scroll>` | *Scroll* suave até à secção |
-| `data-toggle` | `<button data-toggle="faq1">` | Abre/fecha o elemento `#faq1` (classe `.collapse`) |
-| `data-count` | `<span data-count="120">` | Contador animado |
+| `data-scroll` | `<a href="#agenda" data-scroll>` | Scroll suave |
+| `data-toggle` | `<button data-toggle="faq1">` | Abre ou fecha `#faq1` |
+| `data-count` | `<span data-count="60">0</span>` | Contador animado |
 | `data-filter` | `<button data-filter="training">` | Filtra a agenda |
-| `data-month` / `data-year` | `<span data-month="22" data-year="220">` | Preço mensal / anual |
-| `data-choose` | `<button data-choose="Competição">` | Escolhe o plano e mostra o link e o código QR de inscrição |
-| `data-toast` | `<button data-toast="Mensagem">` | Mostra uma mensagem |
+| `data-month` / `data-year` | `<span data-month="18" data-year="180">23</span>` | Preço mensal/anual |
+| `data-choose` | `<button data-choose="Competição">` | Mostra o formulário e QR do plano |
+| `data-toast` | `<button data-toast="Mensagem">` | Mostra uma mensagem curta |
 
----
+## Galeria de fotografias
 
-## 5. Como editar conteúdos
+Coloque as imagens em `images/galeria/`. A pasta pode usar imagens JPG, JPEG e PNG.
 
-### Adicionar fotografias à galeria
-Guarde as imagens JPG, JPEG ou PNG na pasta `images/galeria` e execute, a partir da raiz do projeto (requer Node.js):
+A partir da raiz do projeto, execute:
 
 ```powershell
 node scripts\update-gallery.cjs
 ```
 
-O comando gera `gallery-data.js` com todos os ficheiros `.jpg`, `.jpeg` e `.png` da pasta, incluindo extensões em maiúsculas, sem pesquisar subpastas. Não edite esse ficheiro nem o array manualmente. Repita o comando sempre que adicionar, remover ou mudar o nome de fotografias e publique também o `gallery-data.js` atualizado, juntamente com as imagens. A publicação atual por GitHub Pages não muda; a página continua a funcionar ao abrir `index.html` diretamente.
+O comando gera `gallery-data.js` com:
 
-A ordem segue o nome dos ficheiros com ordenação numérica: use, por exemplo, `01-treino.jpg`, `02-equipa.jpg`. O texto alternativo é gerado a partir do nome, substituindo hífenes e underscores por espaços; use nomes descritivos.
+- ordenação numérica pelo nome do ficheiro;
+- suporte a extensões em maiúsculas;
+- texto alternativo criado a partir do nome;
+- uma única leitura direta da pasta, sem subpastas.
 
-Enquanto a pasta não tiver fotografias e a lista gerada estiver vazia, aparece «Fotografias em breve». Com uma fotografia, os controlos ficam ocultos; com duas ou mais, o carrossel avança a cada 3 segundos e regressa ao início. As imagens preenchem uma área 16:9 (4:3 em telemóvel), sem deformação, podendo ser recortadas nas margens.
+Depois, publique a pasta `images/galeria/` e o novo `gallery-data.js`.
 
-A galeria tem setas, indicadores, pausa, navegação por teclado e gesto de deslizar. A reprodução automática começa por defeito e avança a cada 3 segundos. Com o rato ou foco na galeria, fora do ecrã ou no separador inativo, o avanço fica temporariamente suspenso e retoma automaticamente quando essas condições deixam de se aplicar. O botão «Pausar» mantém o avanço suspenso até selecionar «Reproduzir». A preferência por movimento reduzido desativa as animações, mas não a troca automática de fotografias. Falhas ao carregar fotografias são anunciadas e suspendem a reprodução. Otimize as imagens antes de as adicionar.
+Se não houver fotografias, a página mostra «Fotografias em breve». Com uma imagem, os controlos ficam ocultos; com duas ou mais, o carrossel funciona em modo automático.
 
-### Adicionar um evento à agenda
-Cada evento apresenta um botão «Ver no Google Maps» com o estilo de contorno. A pesquisa usa o campo `place`: indique uma morada completa ou um local inequívoco para obter resultados precisos. Não existem reservas locais nem botão de adesão a sócio na agenda.
+A galeria tem setas, indicadores, botão Pausar/Reproduzir, teclas de direção, gestos de deslizar e reprodução a cada três segundos. Para interromper o avanço temporariamente, o utilizador pode colocar o rato ou o foco sobre a galeria, ou mudar de separador. Falhas ao carregar imagens são anunciadas e suspendem a reprodução dessa fotografia.
 
-Os eventos ficam no *array* `events`, em `script.js`:
+Use nomes descritivos, como `01-treino.jpg` e `02-equipa.jpg`, e otimize as imagens antes de publicar.
+
+## Agenda
+
+Os eventos são declarados no array `events`, em `script.js`:
 
 ```js
 {
-  d: "09", m: "jan", wd: "sáb",        // dia, mês, dia da semana
-  cat: "training",                      // training | competition | community
+  d: "21",
+  m: "nov",
+  wd: "sáb",
+  cat: "training",
   title: "Nome do evento",
-  time: "10:00",
-  place: "Local",
+  time: "09:00",
+  place: "Local completo",
   dist: "Distância ou escalão",
-  text: "Descrição que aparece ao expandir o evento."
+  text: "Descrição apresentada ao expandir o evento.",
 }
 ```
 
-As categorias aparecem em português através do objeto `label` (`Treino`, `Competição`, `Comunidade`).
+Categorias suportadas:
 
-O horário semanal mantém uma largura mínima de 680 px e apresenta scroll horizontal dentro de uma região focável em ecrãs estreitos, sem comprimir as colunas.
+- `training` — Treino;
+- `competition` — Competição;
+- `community` — Comunidade.
 
-### Alterar preços dos planos
-Todos os planos têm o mesmo aspeto inicial, sem indicação de «Mais popular» nem destaque persistente após seleção. Ao passar o rato, o cartão apresenta fundo creme, texto azul-escuro e botão amarelo.
+O botão «Ver no Google Maps» cria uma pesquisa a partir do campo `place`. Use uma morada completa ou um local inequívoco.
 
-No `index.html`, dentro de cada cartão `.plan`, edite o texto e os atributos do preço:
+## Planos
+
+Os três planos principais estão sempre visíveis:
+
+| Plano | Valor inicial |
+|---|---|
+| Escola de Atletismo (2x) | 23 €/mês |
+| Competição | 25 €/mês |
+| Sócio Navegante | 12 €/ano |
+
+O botão «Ver mais planos» revela:
+
+| Plano adicional | Valor |
+|---|---|
+| Escola de Atletismo (1x) | 15 €/mês |
+| Prescrição de treino online | 20 €/mês |
+
+A prescrição online utiliza ligação direta ao WhatsApp. O plano Escola de Atletismo (1x) usa o mesmo formulário e código QR do plano regular de Escola de Atletismo.
+
+Ao escolher um plano com inscrição externa, o botão abre um painel com:
+
+- ligação ao formulário Google Forms;
+- código QR correspondente;
+- título do plano selecionado.
+
+O painel é controlado por `planForms`, em `script.js`. Ao alterar o nome ou adicionar um plano, atualize em conjunto:
+
+1. `data-plan` no cartão;
+2. `data-choose` no botão;
+3. a entrada correspondente em `planForms`.
+
+O seletor mensal/anual está preparado no código e nos atributos dos preços, mas o respetivo interface está comentado em `index.html`.
+
+## Perguntas frequentes
+
+Os FAQ são acordesões controlados por `data-toggle`.
+
+Para adicionar uma nova pergunta, copie um bloco existente e use o mesmo identificador novo em ambos os sítios:
 
 ```html
-<span class="amt" data-month="22" data-year="220">22</span><span class="cur">€</span>
+<button data-toggle="faq4">Nova pergunta?</button>
+<div class="collapse" id="faq4"><div><p>Resposta.</p></div></div>
 ```
 
-Se mudar o nome de um plano com inscrição por formulário, atualize o `data-plan` do cartão, o `data-choose` do botão e a entrada correspondente em `planForms`, no `script.js`.
+## Redes sociais
 
-Os três planos principais ficam sempre visíveis. O botão «+ Ver mais planos» revela dois cartões adicionais e permite voltar a ocultá-los:
-- **Prescrição de treino online:** 20 €/mês, com contacto pelo WhatsApp do clube.
-- **Escola de atletismo — 1x por semana:** 15 €/mês, com o mesmo formulário e código QR da Escola de atletismo.
+O rodapé contém ligações reais a Instagram e Facebook.
 
-O botão usa `aria-expanded` e `aria-controls="extraPlans"`; os cartões adicionais começam com `hidden`. Todos os cartões partilham a mesma grelha, largura e altura; o botão fica abaixo da grelha. O `#planSelect` pertence ao formulário experimental comentado.
-
-### Adicionar uma pergunta frequente
-Copie um bloco existente e use um novo ID (por exemplo `faq4`) tanto no `data-toggle` do botão como no `id` do `.collapse`.
-
-### Redes sociais
-No rodapé, troque cada `<button class="social" data-toast="…">` por uma ligação real:
+Novas ligações podem usar:
 
 ```html
-<a class="social" href="https://instagram.com/…" target="_blank" rel="noopener">IG</a>
+<a class="social" href="https://instagram.com/conta" target="_blank"
+   rel="noopener noreferrer" aria-label="Instagram">IG</a>
 ```
 
----
+## Formulário experimental
 
-## 6. Formulário de inscrição
+O formulário `#joinForm`, o painel `#success` e o JavaScript/CSS exclusivos estão comentados no código-fonte. Por isso, não são apresentados nem executados.
 
-O formulário experimental `#joinForm`, o painel de sucesso e o CSS/JavaScript exclusivos estão comentados e não são apresentados nem executados. Os botões dos planos continuam a mostrar os formulários externos e os códigos QR. Para reativar a versão experimental, remova os comentários identificados com `joinForm desativado` nos três ficheiros.
+O fluxo disponível atualmente é o formulário externo associado ao plano selecionado.
 
-Comportamento da versão experimental quando reativada:
+Quando reativado, o formulário experimental valida:
 
-- **Campos obrigatórios:** nome, email (validado por expressão regular), plano e consentimento.
-- **Quando é válido:** o formulário é ocultado e aparece o painel `#success`, com uma mensagem personalizada. O botão "Inscrever outro atleta" repõe o formulário.
-- **Limitação:** os dados **não são enviados** para nenhum servidor, porque o site é estático. Para receber inscrições reais, ligue o `<form>` a um serviço como Formspree, Google Forms ou um backend próprio.
+- nome;
+- email;
+- plano;
+- consentimento;
+- data da sessão.
 
----
+Os dados seriam validados apenas no navegador e não são enviados para um servidor. Para receber inscrições reais, o formulário teria de ser ligado a um serviço como Formspree, Google Forms ou a uma API própria.
 
-## 7. Acessibilidade
+## Acessibilidade
 
-- Em mobile, o cabeçalho tem fundo creme sólido antes e depois de scroll. O menu aberto mantém o fundo escuro em todo o ecrã, com links claros e texto escuro no botão «Planos» para garantir contraste.
-- `lang="pt-PT"` no documento.
-- Atributos `aria-expanded`, `aria-controls`, `aria-label` e `role` nos botões interativos.
-- Foco visível (`:focus-visible`) com contorno laranja.
-- O menu móvel fecha com a tecla **Esc**.
-- As animações respeitam `prefers-reduced-motion`.
+- Documento definido como `lang="pt-PT"`.
+- Navegação principal e secundária identificadas por `aria-label`.
+- Botões de menu e acordeões incluem `aria-expanded` e `aria-controls`.
+- Elementos do carrossel incluem nomes acessíveis, estado atual e anúncio de mudanças.
+- Navegação móvel fechável com a tecla `Esc`.
+- Foco visível com `:focus-visible`.
+- Estados ativos e mensagens utilizam atributos ARIA.
+- Animações adaptadas para `prefers-reduced-motion`.

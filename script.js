@@ -140,18 +140,7 @@
   });
 
   /* ---------- agenda ---------- */
-  const events = [
-    {
-      d: "01",
-      m: "nov",
-      wd: "dom",
-      cat: "community",
-      title: "Corrida das Famílias à Beira-Rio",
-      time: "09:30",
-      place: "Passeio ribeirinho",
-      dist: "3 km / 5 km",
-      text: "Uma volta descontraída junto ao rio para todas as idades. Carrinhos de bebé e cães são bem-vindos — há medalha para cada criança que terminar.",
-    },
+  const events = [    
     {
       d: "21",
       m: "nov",
@@ -164,16 +153,27 @@
       text: "Ritmo da corrida de balanço, chamada e receção com o treinador Tiago. Análise em vídeo para cada atleta.",
     },
     {
-      d: "28",
+      d: "8",
       m: "nov",
-      wd: "sáb",
+      wd: "ter",
       cat: "community",
-      title: "Sábado de Pista Aberta",
-      time: "10:00",
-      place: "Pista principal",
-      dist: "Grátis · todas as idades",
-      text: "O nosso dia aberto mensal: experimenta velocidade, barreiras e lançamentos sem compromisso. Ideal para estreantes e pais.",
+      title: "Festa de Natal",
+      time: "15:00",
+      place: "Rancho Fonte da Senhora - Atalaia",
+      dist: "",
+      text: "A nossa gala de Natal para atletas, famílias e parceiros. Confirmações até 06 de dezembro.",
     },
+    {
+      d: "22",
+      m: "nov",
+      wd: "dom",
+      cat: "competition",
+      title: "Campeonatos Nacionais de Corta-Mato",
+      time: "09:00",
+      place: "Fortaleza Valença-Minho",
+      dist: "1.5 km · 3 km",
+      text: "103º Campeonatos Nacionais de corta-mato sub-14, sub-16, sub-18, sub-20, absolutos",
+    }, 
     {
       d: "12",
       m: "dez",
@@ -182,21 +182,10 @@
       title: "VI Corrida São Silvestre Alcochete",
       time: "18:00",
       place: "Largo de S. João, Alcochete , Setúbal",
-      dist: "Corrida:10km · 5km · 700m · 400m | Caminhada:5km",
+      dist: "Corrida: 10km · 5km · 700m · 400m | Caminhada: 5km",
       text: "A correr ou a caminhar, vem participar! Inscrições até 09 de dezembro às 23h59",
     },
-    {
-      d: "22",
-      m: "dez",
-      wd: "dom",
-      cat: "competition",
-      title: "Campeonatos Nacionais de Corta-Mato",
-      time: "09:00",
-      place: "Valença-Minho",
-      dist: "1,5 km",
-      text: "103º Campeonatos Nacionais de corta-mato sub-14, sub-16, sub-18, sub-20, absolutos",
-    },
-  ];
+   ];
   
   const list = $("#events");
   const label = {
