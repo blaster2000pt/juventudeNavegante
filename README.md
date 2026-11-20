@@ -8,6 +8,7 @@ O projeto usa apenas HTML, CSS e JavaScript, sem frameworks, dependências de ex
 
 - O identificador visual usa o logótipo `images/juna_CORES_1-100.jpg` no cabeçalho e como ícone do site.
 - A pista SVG apresenta quatro pistas, cor de tartan castanha, área interior de relva e corredores animados.
+- O cartão do hero identifica o próximo evento da agenda pelo seu título.
 - A paleta combina castanho/bordô, verde, amarelo, laranja, azul-marinho e tons creme.
 - Foram adicionados novos planos de treino e uma galeria de fotografias gerida por dados.
 - Os eventos da agenda podem ser filtrados por categoria e têm ligação direta ao Google Maps.

@@ -141,17 +141,17 @@
 
   /* ---------- agenda ---------- */
   const events = [    
-    {
-      d: "21",
-      m: "nov",
-      wd: "sáb",
-      cat: "training",
-      title: "Laboratório de Saltos: Comprimento e Triplo",
-      time: "09:00",
-      place: "Caixa de saltos",
-      dist: "Todos os níveis",
-      text: "Ritmo da corrida de balanço, chamada e receção com o treinador Tiago. Análise em vídeo para cada atleta.",
-    },
+    // {
+    //   d: "21",
+    //   m: "nov",
+    //   wd: "sáb",
+    //   cat: "training",
+    //   title: "Laboratório de Saltos: Comprimento e Triplo",
+    //   time: "09:00",
+    //   place: "Caixa de saltos",
+    //   dist: "Todos os níveis",
+    //   text: "Ritmo da corrida de balanço, chamada e receção com o treinador Tiago. Análise em vídeo para cada atleta.",
+    // },
     {
       d: "8",
       m: "nov",
@@ -186,6 +186,37 @@
       text: "A correr ou a caminhar, vem participar! Inscrições até 09 de dezembro às 23h59",
     },
    ];
+
+  const monthNumbers = {
+    jan: 0,
+    fev: 1,
+    mar: 2,
+    abr: 3,
+    mai: 4,
+    jun: 5,
+    jul: 6,
+    ago: 7,
+    set: 8,
+    out: 9,
+    nov: 10,
+    dez: 11,
+  };
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  const nextEvent = events
+    .map((event) => ({
+      ...event,
+      date: new Date(now.getFullYear(), monthNumbers[event.m], Number(event.d)),
+    }))
+    .filter((event) => event.date >= now)
+    .sort((a, b) => a.date - b.date)[0];
+
+  const nextEventTitle = $("#nextEventTitle");
+  if (nextEvent) {
+    nextEventTitle.textContent = nextEvent.title;
+  } else {
+    nextEventTitle.textContent = "Sem eventos programados";
+  }
   
   const list = $("#events");
   const label = {
