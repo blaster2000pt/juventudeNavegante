@@ -276,6 +276,11 @@
       </div>
 
       <ul class="events" id="events" aria-live="polite"></ul>
+      <nav class="events-pagination" id="eventsPagination" aria-label="Paginação da agenda" hidden>
+        <button class="btn btn--line btn--small" id="eventsPrevious" type="button">← Anteriores</button>
+        <span class="events-pagination__status" id="eventsPageStatus" aria-live="polite"></span>
+        <button class="btn btn--line btn--small" id="eventsNext" type="button">Próximos →</button>
+      </nav>
 
       <div class="week reveal">
         <h3 id="weekScheduleTitle">Horário semanal</h3>

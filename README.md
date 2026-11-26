@@ -197,6 +197,7 @@ Escalões suportados em `categories`:
 
 Um evento pode pertencer a vários escalões. O botão «Tudo» mostra todos os eventos; cada filtro de escalão mostra os eventos associados a esse escalão.
 Eventos sem escalão indicado usam `categories: []` e aparecem apenas em «Tudo».
+A agenda mostra 10 eventos por página, começando com os dois anteriores, o próximo evento e os sete seguintes. Os controlos «Anteriores» e «Próximos» percorrem o restante calendário; mudar de escalão volta a centrar a lista no próximo evento desse filtro.
 
 O botão «Ver localização» cria uma pesquisa no Google Maps a partir do campo `place`. Use uma morada completa ou um local inequívoco.
 

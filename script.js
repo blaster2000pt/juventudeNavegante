@@ -201,13 +201,13 @@
 
   const now = new Date();
   now.setHours(0, 0, 0, 0);
-  const nextEvent = events
-    .map((event) => {
+  const orderedEvents = events
+    .map((event, index) => {
       const [year, month, day] = event.date.split("-").map(Number);
-      return { ...event, date: new Date(year, month - 1, day) };
+      return { ...event, index, eventDate: new Date(year, month - 1, day) };
     })
-    .filter((event) => event.date >= now)
-    .sort((a, b) => a.date - b.date)[0];
+    .sort((a, b) => a.eventDate - b.eventDate || a.index - b.index);
+  const nextEvent = orderedEvents.find((event) => event.eventDate >= now);
 
   const nextEventTitle = $("#nextEventTitle");
   if (nextEvent) {
@@ -218,15 +218,37 @@
   
   const list = $("#events");
   const labels = Object.fromEntries(ageGroups.map(({ id, label }) => [id, label]));
+  const pageSize = 10;
+  const pagination = $("#eventsPagination");
+  const previousPage = $("#eventsPrevious");
+  const nextPage = $("#eventsNext");
+  const pageStatus = $("#eventsPageStatus");
+  let activeFilter = "all";
 
-  const render = (filter = "all") => {
+  const getFilteredEvents = () =>
+    orderedEvents.filter((event) =>
+      activeFilter === "all" || event.categories.includes(activeFilter),
+    );
+  const getUpcomingPageStart = (filteredEvents) => {
+    const upcomingIndex = filteredEvents.findIndex((event) => event.eventDate >= now);
+    return upcomingIndex < 0
+      ? Math.max(0, filteredEvents.length - pageSize)
+      : Math.max(0, upcomingIndex - 2);
+  };
+  let pageStarts = [getUpcomingPageStart(getFilteredEvents())];
+  let pageIndex = 0;
+
+  const render = () => {
     list.innerHTML = "";
-    events
-      .map((ev, i) => ({ ...ev, i }))
-      .filter((ev) => filter === "all" || ev.categories.includes(filter))
+    const filteredEvents = getFilteredEvents();
+    const pageStart = pageStarts[pageIndex];
+    const upcomingEvent = filteredEvents.find((event) => event.eventDate >= now);
+    const visibleEvents = filteredEvents.slice(pageStart, pageStart + pageSize);
+    visibleEvents
+      .map((ev) => ({ ...ev, i: ev.index }))
       .forEach((ev, n) => {
         const li = document.createElement("li");
-        li.className = "event";
+        li.className = `event${ev.eventDate < now ? " event--past" : ""}${ev.index === upcomingEvent?.index ? " event--upcoming" : ""}`;
         li.style.animationDelay = `${n * 60}ms`;
         const categoryTags = ev.categories
           .map((category) => `<span class="tag">${labels[category]}</span>`)
@@ -261,8 +283,51 @@
           </div>`;
         list.appendChild(li);
       });
+    pagination.hidden = filteredEvents.length <= pageSize;
+    previousPage.disabled = pageIndex === 0 && pageStart === 0;
+    nextPage.disabled =
+      pageIndex + 1 >= pageStarts.length &&
+      pageStart + pageSize >= filteredEvents.length;
+    if (filteredEvents.length) {
+      const firstVisible = pageStart + 1;
+      const lastVisible = Math.min(pageStart + pageSize, filteredEvents.length);
+      pageStatus.textContent = `${firstVisible}–${lastVisible} de ${filteredEvents.length}`;
+    } else {
+      pageStatus.textContent = "Sem eventos neste escalão";
+    }
+  };
+  const renderPageWithoutJump = () => {
+    const paginationTop = pagination.getBoundingClientRect().top;
+    render();
+    const topShift = pagination.getBoundingClientRect().top - paginationTop;
+    if (Math.abs(topShift) > 1) {
+      window.scrollBy({ top: topShift, behavior: "instant" });
+    }
+    (nextPage.disabled ? previousPage : nextPage).focus({ preventScroll: true });
   };
   render();
+
+  previousPage.addEventListener("click", () => {
+    if (pageIndex > 0) {
+      pageIndex -= 1;
+    } else {
+      const currentStart = pageStarts[pageIndex];
+      if (currentStart === 0) return;
+      pageStarts.unshift(Math.max(0, currentStart - pageSize));
+    }
+    renderPageWithoutJump();
+  });
+  nextPage.addEventListener("click", () => {
+    if (pageIndex + 1 < pageStarts.length) {
+      pageIndex += 1;
+    } else {
+      const nextStart = pageStarts[pageIndex] + pageSize;
+      if (nextStart >= getFilteredEvents().length) return;
+      pageStarts.push(nextStart);
+      pageIndex += 1;
+    }
+    renderPageWithoutJump();
+  });
 
   list.addEventListener("click", (e) => {
     const head = e.target.closest(".event__head");
@@ -278,7 +343,10 @@
         b.classList.toggle("is-active", b === f);
         b.setAttribute("aria-pressed", String(b === f));
       });
-      render(f.dataset.filter);
+      activeFilter = f.dataset.filter;
+      pageStarts = [getUpcomingPageStart(getFilteredEvents())];
+      pageIndex = 0;
+      render();
     }),
   );
 
