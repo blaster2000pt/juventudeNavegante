@@ -140,74 +140,72 @@
   });
 
   /* ---------- agenda ---------- */
-  const events = [    
-    // {
-    //   d: "21",
-    //   m: "nov",
-    //   wd: "sáb",
-    //   cat: "training",
-    //   title: "Laboratório de Saltos: Comprimento e Triplo",
-    //   time: "09:00",
-    //   place: "Caixa de saltos",
-    //   dist: "Todos os níveis",
-    //   text: "Ritmo da corrida de balanço, chamada e receção com o treinador Tiago. Análise em vídeo para cada atleta.",
-    // },
-    {
-      d: "8",
-      m: "nov",
-      wd: "ter",
-      cat: "community",
-      title: "Festa de Natal",
-      time: "15:00",
-      place: "Rancho Fonte da Senhora - Atalaia",
-      dist: "",
-      text: "A nossa gala de Natal para atletas, famílias e parceiros. Confirmações até 06 de dezembro.",
-    },
-    {
-      d: "22",
-      m: "nov",
-      wd: "dom",
-      cat: "competition",
-      title: "Campeonatos Nacionais de Corta-Mato",
-      time: "09:00",
-      place: "Fortaleza Valença-Minho",
-      dist: "1.5 km · 3 km",
-      text: "103º Campeonatos Nacionais de corta-mato sub-14, sub-16, sub-18, sub-20, absolutos",
-    }, 
-    {
-      d: "12",
-      m: "dez",
-      wd: "sáb",
-      cat: "competition",
-      title: "VI Corrida São Silvestre Alcochete",
-      time: "18:00",
-      place: "Largo de S. João, Alcochete , Setúbal",
-      dist: "Corrida: 10km · 5km · 700m · 400m | Caminhada: 5km",
-      text: "A correr ou a caminhar, vem participar! Inscrições até 09 de dezembro às 23h59",
-    },
-   ];
+  const ageGroups = [
+    { id: "sub-10", label: "Sub-10" },
+    { id: "sub-12", label: "Sub-12" },
+    { id: "sub-14", label: "Sub-14" },
+    { id: "sub-15", label: "Sub-15" },
+    { id: "sub-16", label: "Sub-16" },
+    { id: "sub-18", label: "Sub-18" },
+    { id: "sub-20", label: "Sub-20" },
+    { id: "sub-23", label: "Sub-23" },
+    { id: "seniores", label: "Séniores" },
+    { id: "veteranos", label: "Veteranos" },
+  ];
+  const allAgeGroups = ageGroups.map(({ id }) => id);
+  const events = [
+    { date: "2026-09-26", d: "26", m: "set", wd: "sáb", categories: ["sub-10", "sub-12"], title: "Taça Regional Sub-12", place: "Seixal" },
+    { date: "2026-09-27", d: "27", m: "set", wd: "dom", categories: ["sub-10", "sub-12"], title: "Taça Regional Sub-12", place: "Almada" },
+    { date: "2026-11-01", d: "1", m: "nov", wd: "dom", categories: ["sub-10", "sub-12", "sub-14", "sub-16", "sub-18", "sub-20", "seniores", "veteranos"], title: "Campeonato Regional de Corta-Mato", place: "Amora" },
+    { date: "2026-11-08", d: "8", m: "nov", wd: "dom", categories: ["sub-14", "sub-15"], title: "Concentração de Salto em Altura", place: "Seixal", text: "Sob convocatória." },
+    { date: "2026-11-14", d: "14", m: "nov", wd: "sáb", categories: ["sub-10", "sub-12"], title: "Taça Regional Sub-12", place: "Escola Básica Quinta Nova da Telha, Barreiro" },
+    { date: "2026-11-15", d: "15", m: "nov", wd: "dom", categories: ["sub-14", "sub-16"], title: "Provas de Preparação", place: "A definir" },
+    { date: "2026-11-22", d: "22", m: "nov", wd: "dom", categories: ["sub-14", "sub-16", "sub-18"], title: "Campeonato Nacional de Corta-Mato", place: "Valença" },
+    { date: "2026-11-28", d: "28–29", m: "nov", wd: "sáb/dom", categories: ["sub-18", "sub-20", "sub-23", "seniores", "veteranos"], title: "Provas de Preparação", place: "A definir", text: "Provas nos dias 28 e 29 de novembro." },
+    { date: "2026-12-01", d: "1", m: "dez", wd: "ter", categories: [], title: "Corta-Mato da Machada", place: "Barreiro", text: "Sob convocatória; possível prova de treino." },
+    { date: "2026-12-05", d: "5", m: "dez", wd: "sáb", categories: [], title: "Concentração de Martelo", place: "Seixal", text: "Sob convocatória." },
+    { date: "2026-12-08", d: "8", m: "dez", wd: "ter", categories: ["sub-12"], title: "Taça Regional Sub-12", place: "Seixal" },
+    { date: "2026-12-08", d: "8", m: "dez", wd: "ter", categories: allAgeGroups, title: "Gala de Natal da Juventude Navegante", place: "Atalaia", text: "Encontro para atletas, famílias e parceiros." },
+    { date: "2026-12-12", d: "12", m: "dez", wd: "sáb", categories: ["sub-12", "sub-14", "seniores", "veteranos"], title: "São Silvestre Alcochete", place: "Alcochete" },
+    { date: "2026-12-13", d: "13", m: "dez", wd: "dom", categories: ["sub-18"], title: "Provas de Preparação Sub-18", place: "Pista Carla Sacramento, Seixal" },
+    { date: "2026-12-19", d: "19–20", m: "dez", wd: "sáb/dom", categories: ["sub-14", "sub-16", "sub-18", "sub-20", "sub-23", "seniores", "veteranos"], title: "Triatlo Técnico e Provas de Preparação de Absolutos", place: "A definir", text: "Provas nos dias 19 e 20 de dezembro." },
+    { date: "2027-01-16", d: "16", m: "jan", wd: "sáb", categories: [], title: "InterAssociações de Triatlo Técnico", place: "Alpiarça", text: "Convocatória do Diretor Técnico Regional." },
+    { date: "2027-01-17", d: "17", m: "jan", wd: "dom", categories: ["sub-12", "sub-14"], title: "Taça Regional Sub-12 e Provas de Preparação Sub-14", place: "A definir" },
+    { date: "2027-01-23", d: "23–24", m: "jan", wd: "sáb/dom", categories: ["sub-18", "sub-20", "sub-23", "seniores"], title: "Campeonato Regional de Lançamentos Longos", place: "A definir", text: "Provas nos dias 23 e 24 de janeiro." },
+    { date: "2027-01-30", d: "30", m: "jan", wd: "sáb", categories: ["sub-18", "sub-20", "sub-23", "seniores"], title: "Campeonato Regional de Absolutos", place: "A definir" },
+    { date: "2027-01-31", d: "31", m: "jan", wd: "dom", categories: [], title: "Triatlo Técnico – Final Nacional", place: "A definir (pista curta)", text: "Convocatória do Diretor Técnico Regional." },
+    { date: "2027-02-06", d: "6–7", m: "fev", wd: "sáb/dom", categories: ["sub-18"], title: "Campeonato Nacional de Pista Coberta Sub-18", place: "A definir", text: "Provas nos dias 6 e 7 de fevereiro; necessários mínimos." },
+    { date: "2027-02-27", d: "27", m: "fev", wd: "sáb", categories: ["sub-10", "sub-12"], title: "Taça Regional Sub-10 e Sub-12", place: "Barreiro" },
+    { date: "2027-02-27", d: "27", m: "fev", wd: "sáb", categories: ["sub-18", "sub-20", "sub-23", "seniores"], title: "Campeonato Nacional de Longos", place: "A definir", text: "Do escalão Sub-18 a Séniores; necessários mínimos." },
+    { date: "2027-03-06", d: "6–7", m: "mar", wd: "sáb/dom", categories: ["sub-20"], title: "Campeonato Nacional Sub-20 de Pista Curta", place: "A definir", text: "Provas nos dias 6 e 7 de março; necessário mínimo." },
+    { date: "2027-03-20", d: "20", m: "mar", wd: "sáb", categories: ["sub-14", "sub-16"], title: "Apuramento de Salto em Altura e Provas de Preparação", place: "A definir" },
+    { date: "2027-03-21", d: "21", m: "mar", wd: "dom", categories: ["sub-12", "sub-14"], title: "Apuramento 1 km Jovem, Provas de Preparação e Taça Regional Sub-12", place: "A definir" },
+    { date: "2027-04-03", d: "3–4", m: "abr", wd: "sáb/dom", categories: ["sub-14"], title: "Atleta Completo Regional", place: "A definir", text: "Provas nos dias 3 e 4 de abril." },
+    { date: "2027-04-10", d: "10", m: "abr", wd: "sáb", categories: [], title: "Campeonato Regional de Trail", place: "A definir", text: "Sob convocatória." },
+    { date: "2027-04-10", d: "10", m: "abr", wd: "sáb", categories: ["sub-14"], title: "Campeonato Regional Sub-14", place: "A definir" },
+    { date: "2027-04-17", d: "17", m: "abr", wd: "sáb", categories: [], title: "Atleta Completo Nacional", place: "Ponta Delgada (Açores)", text: "Convocatória do Diretor Regional." },
+    { date: "2027-04-18", d: "18", m: "abr", wd: "dom", categories: ["sub-12"], title: "Taça Regional Sub-12", place: "Sobreda" },
+    { date: "2027-05-01", d: "1–2", m: "mai", wd: "sáb/dom", categories: ["sub-16", "sub-18"], title: "Olímpico Jovem Regional", place: "A definir", text: "Provas nos dias 1 e 2 de maio." },
+    { date: "2027-05-08", d: "8–9", m: "mai", wd: "sáb/dom", categories: ["sub-14", "sub-16"], title: "Campeonato Regional Sub-16", place: "A definir", text: "Provas nos dias 8 e 9 de maio." },
+    { date: "2027-05-15", d: "15–16", m: "mai", wd: "sáb/dom", categories: ["sub-10", "sub-12"], title: "Campeonato Regional Sub-10 e Sub-12", place: "A definir", text: "Provas nos dias 15 e 16 de maio." },
+    { date: "2027-05-15", d: "15–16", m: "mai", wd: "sáb/dom", categories: [], title: "Olímpico Jovem Nacional", place: "Albufeira", text: "Provas nos dias 15 e 16 de maio; convocatória do Diretor Técnico Regional." },
+    { date: "2027-05-16", d: "16", m: "mai", wd: "dom", categories: ["sub-14", "sub-16", "sub-18"], title: "Meeting Sub-14, Sub-16 e Sub-18", place: "A definir" },
+    { date: "2027-05-22", d: "22–23", m: "mai", wd: "sáb/dom", categories: ["sub-14"], title: "Campeonato Nacional Sub-14", place: "A definir", text: "Provas nos dias 22 e 23 de maio." },
+    { date: "2027-05-29", d: "29–30", m: "mai", wd: "sáb/dom", categories: ["sub-16", "sub-18"], title: "Campeonato Regional Sub-18", place: "Pista Carla Sacramento, Seixal", text: "Provas nos dias 29 e 30 de maio." },
+    { date: "2027-06-09", d: "9", m: "jun", wd: "qua", categories: ["sub-16", "sub-18", "sub-20"], title: "Meeting do Seixal", place: "Pista Carla Sacramento, Seixal" },
+    { date: "2027-06-19", d: "19–20", m: "jun", wd: "sáb/dom", categories: ["sub-16", "sub-18"], title: "Campeonato Nacional Sub-18", place: "Pista Carla Sacramento, Seixal", text: "Provas nos dias 19 e 20 de junho." },
+    { date: "2027-06-26", d: "26–27", m: "jun", wd: "sáb/dom", categories: ["sub-20", "sub-23", "seniores"], title: "Campeonato Regional de Absolutos e Sub-20", place: "Pista Carla Sacramento, Seixal", text: "Provas nos dias 26 e 27 de junho." },
+    { date: "2027-07-03", d: "3–4", m: "jul", wd: "sáb/dom", categories: ["sub-18", "sub-20"], title: "Campeonato Nacional Sub-20", place: "A definir", text: "Provas nos dias 3 e 4 de julho." },
+    { date: "2027-07-10", d: "10–11", m: "jul", wd: "sáb/dom", categories: ["sub-20", "sub-23"], title: "Campeonato Nacional Sub-23", place: "A definir", text: "Provas nos dias 10 e 11 de julho." },
+  ];
 
-  const monthNumbers = {
-    jan: 0,
-    fev: 1,
-    mar: 2,
-    abr: 3,
-    mai: 4,
-    jun: 5,
-    jul: 6,
-    ago: 7,
-    set: 8,
-    out: 9,
-    nov: 10,
-    dez: 11,
-  };
   const now = new Date();
   now.setHours(0, 0, 0, 0);
   const nextEvent = events
-    .map((event) => ({
-      ...event,
-      date: new Date(now.getFullYear(), monthNumbers[event.m], Number(event.d)),
-    }))
+    .map((event) => {
+      const [year, month, day] = event.date.split("-").map(Number);
+      return { ...event, date: new Date(year, month - 1, day) };
+    })
     .filter((event) => event.date >= now)
     .sort((a, b) => a.date - b.date)[0];
 
@@ -219,39 +217,46 @@
   }
   
   const list = $("#events");
-  const label = {
-    training: "Treino",
-    competition: "Competição",
-    community: "Comunidade",
-  };
+  const labels = Object.fromEntries(ageGroups.map(({ id, label }) => [id, label]));
 
   const render = (filter = "all") => {
     list.innerHTML = "";
     events
       .map((ev, i) => ({ ...ev, i }))
-      .filter((ev) => filter === "all" || ev.cat === filter)
+      .filter((ev) => filter === "all" || ev.categories.includes(filter))
       .forEach((ev, n) => {
         const li = document.createElement("li");
         li.className = "event";
         li.style.animationDelay = `${n * 60}ms`;
+        const categoryTags = ev.categories
+          .map((category) => `<span class="tag">${labels[category]}</span>`)
+          .join("");
+        const eventDetails = [
+          ev.time && `⏱ ${ev.time}`,
+          ev.place && `📍 ${ev.place}`,
+          ev.dist && `🏃 ${ev.dist}`,
+        ].filter(Boolean);
+        const eventMeta = [ev.time, ev.place].filter(Boolean).join(" · ");
         li.innerHTML = `
           <button class="event__head" aria-expanded="false" aria-controls="ev-${ev.i}">
-            <span class="event__date"><b>${ev.d}</b><small>${ev.m} · ${ev.wd}</small></span>
+            <span class="event__date ${ev.d.includes("–") ? "event__date--range" : ""}"><b>${ev.d}</b><small>${ev.m} · ${ev.wd}</small></span>
             <span>
               <span class="event__title">${ev.title}</span>
-              <span class="event__meta"><span class="tag tag--${ev.cat}">${label[ev.cat]}</span>${ev.time} · ${ev.place}</span>
+              <span class="event__meta">${categoryTags}${eventMeta}</span>
             </span>
             <i class="event__plus" aria-hidden="true">+</i>
           </button>
           <div class="collapse event__body" id="ev-${ev.i}">
             <div><div>
               <div>
-                <p>${ev.text}</p>
-                <ul><li>⏱ ${ev.time}</li><li>📍 ${ev.place}</li><li>🏃 ${ev.dist}</li></ul>
+                ${ev.text ? `<p>${ev.text}</p>` : ""}
+                ${eventDetails.length ? `<ul>${eventDetails.map((detail) => `<li>${detail}</li>`).join("")}</ul>` : ""}
               </div>
-              <div class="event__actions">
-                <a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(ev.place)}" target="_blank" rel="noopener noreferrer" class="btn btn--small btn--line">📍 Ver localização</a>
-              </div>
+              ${ev.place && ev.place !== "A definir" && !ev.place.startsWith("A definir ") ? `
+                <div class="event__actions">
+                  <a href="https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(ev.place)}" target="_blank" rel="noopener noreferrer" class="btn btn--small btn--line">📍 Ver localização</a>
+                </div>
+              ` : ""}
             </div></div>
           </div>`;
         list.appendChild(li);
@@ -271,7 +276,7 @@
     f.addEventListener("click", () => {
       $$(".filter").forEach((b) => {
         b.classList.toggle("is-active", b === f);
-        b.setAttribute("aria-selected", String(b === f));
+        b.setAttribute("aria-pressed", String(b === f));
       });
       render(f.dataset.filter);
     }),

@@ -133,7 +133,7 @@ O `script.js` usa uma IIFE e está organizado pelas seguintes áreas:
 | `data-scroll` | `<a href="#agenda" data-scroll>` | Scroll suave |
 | `data-toggle` | `<button data-toggle="faq1">` | Abre ou fecha `#faq1` |
 | `data-count` | `<span data-count="60">0</span>` | Contador animado |
-| `data-filter` | `<button data-filter="training">` | Filtra a agenda |
+| `data-filter` | `<button data-filter="sub-10">` | Filtra a agenda por escalão |
 | `data-month` / `data-year` | `<span data-month="18" data-year="180">23</span>` | Preço mensal/anual |
 | `data-choose` | `<button data-choose="Competição">` | Mostra o formulário e QR do plano |
 | `data-toast` | `<button data-toast="Mensagem">` | Mostra uma mensagem curta |
@@ -169,23 +169,34 @@ Os eventos são declarados no array `events`, em `script.js`:
 
 ```js
 {
-  d: "21",
+  date: "2026-11-14",
+  d: "14",
   m: "nov",
   wd: "sáb",
-  cat: "training",
+  categories: ["sub-14", "sub-16"],
   title: "Nome do evento",
-  time: "09:00",
   place: "Local completo",
-  dist: "Distância ou escalão",
   text: "Descrição apresentada ao expandir o evento.",
 }
 ```
 
-Categorias suportadas:
+`date` usa o formato `AAAA-MM-DD` e determina o ano usado para calcular o próximo evento. Em provas de vários dias, `d` mostra o intervalo e `wd` os dias da semana. O horário só deve ser incluído quando for conhecido; locais por confirmar usam `A definir`.
 
-- `training` — Treino;
-- `competition` — Competição;
-- `community` — Comunidade.
+Escalões suportados em `categories`:
+
+- `sub-10` — Sub-10;
+- `sub-12` — Sub-12;
+- `sub-14` — Sub-14;
+- `sub-15` — Sub-15;
+- `sub-16` — Sub-16;
+- `sub-18` — Sub-18;
+- `sub-20` — Sub-20;
+- `sub-23` — Sub-23;
+- `seniores` — Séniores;
+- `veteranos` — Veteranos.
+
+Um evento pode pertencer a vários escalões. O botão «Tudo» mostra todos os eventos; cada filtro de escalão mostra os eventos associados a esse escalão.
+Eventos sem escalão indicado usam `categories: []` e aparecem apenas em «Tudo».
 
 O botão «Ver localização» cria uma pesquisa no Google Maps a partir do campo `place`. Use uma morada completa ou um local inequívoco.
 
